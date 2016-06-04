@@ -1,0 +1,298 @@
+@font-face{
+    font-family: Intro-Caps;
+    src: url(../fonts/Intro-Regular-Caps.otf);
+}
+@font-face{
+    font-family: Intro-Light;
+    src: url(../fonts/Intro-Light.otf);
+}
+@font-face{
+    font-family: Intro-Bold;
+    src: url(../fonts/Intro-Bold.otf);
+}
+html, 
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #131319;
+    /*background: url(../images/pattern_noise.png);
+    background-size: contain;*/
+}
+.fTextAlign-C{
+    text-align: center;
+}
+.fMarginAuto{
+    margin: 0 auto;
+}
+.fPos-Rel{
+    position: relative;
+}
+.fDis-Block{
+    display: block;
+}
+.fLandWrapper{
+    /*width: 1920px;min*/
+    width: 1920px;
+}
+.fLandHeader{
+    background: url(../images/land-head-1.png)no-repeat;
+    height: 1135px;
+    /*background: url(../images/land-header.png)no-repeat;*/
+}
+.fLandHeader-H1{
+    background: url(../images/land-head-h1.png)no-repeat;
+    width: 907px;
+    height: 43px;
+    /*top: 760px;*/
+    top: 380px;
+    left: 510px;
+}
+.fLandHeader-BagShadow{
+    background: url(../images/shadow_box.png)no-repeat;
+    width: 1069px;
+    height: 147px;
+    top: 350px; /*733*/
+    left: 422px;
+}
+.fNoise{
+    background: url(../images/noise-1.png);
+    height: 4919px;
+}
+.fLandLine{
+    height: 152px;
+    background: url(../images/land-line-1.png);
+}
+.fLandMiddle{
+    /*background: url(../images/land-middle-1.png)no-repeat;*/
+    background: url(../images/land-middle-2.png)no-repeat;
+    height: 3343px;
+    margin-top: -360px;
+}
+.fLineFont{
+    color: #ffffff;
+    font: 700 100px / 175px Intro-Caps;
+}
+.fLandLine-1{
+    top: 130px;
+}
+.fLandLine-2{
+    top: 67px;
+}
+.fDis-Inline{
+    display: inline-block;
+}
+.fLineIcon[data-image="fruit"]{
+    background: url(../images/line-icon-fruit.png)no-repeat;
+    width: 114px;
+    height: 119px;
+}
+.fLineIcon[data-image="nut"]{
+    background: url(../images/icon-nut.png)no-repeat;
+    width: 92px;
+    height: 90px;
+}
+.fLineIcon[data-image="bag"]{
+    background: url(../images/icon-bag.png)no-repeat;
+    width: 103px;
+    height: 89px;
+}
+.fWrapper-976PX{
+    width: 976px;
+}
+.fVertAlign-Mid{
+    vertical-align: middle;
+}
+[data-content="Fruit"]{
+    margin-top: 207px;
+}
+.fObj{
+    height: 196px;
+    width: 240px;
+    overflow: hidden;
+    margin-top: 73px;
+}
+.fObj-Image{
+    width: 170px;
+    height: 170px;
+    border-radius: 100px;
+}
+.fObj-Price{
+    color: #ffffff;
+    width: 74px;
+    height: 74px;
+    bottom: 196px;
+    left: 130px;
+    padding-top: 20px; 
+    padding-left: 12px;
+}
+.fObj-Price[data-image="fruit"]{
+    background: url(../images/fruit-price.png)no-repeat;
+}
+.fObj-Price[data-image="nut"]{
+    background: url(../images/nut-price.png)no-repeat;
+}
+.fObj-Price-B{
+    font: 700 25px / 19px Intro-Bold;
+}
+.fObj-Price-L{
+    font: 700 15px / 19px Intro-Bold;
+}
+.fObj-Label{
+    color: #ffffff;
+    font: 700 16px / 27px Intro-Light;
+}
+.fPos-Fixed{
+    position: fixed;
+}
+.fMenu{
+    left: 0px;
+    top: 1180px;
+}
+.fMenu-Choice,
+.fMenu-Choice.fActive{
+    height: 123px;
+    padding-top: 14px;
+}
+.fMenu-Choice{
+    background: url(../images/menu-choice.png)no-repeat;
+    width: 147px;
+}
+.fMenu-Choice.fActive{
+    background: url(../images/menu-choice-active.png)no-repeat;
+    width: 165px;
+}
+.fMenu-Choice-Label{
+    color: #ffffff;
+    font: 700 16px / 27px Intro-Light;
+}
+.fMenu-Choice-Image{
+    width: 69px;
+    height: 72px;
+    background-size: contain!important;
+    margin: 0 auto;
+    
+}
+.fMenu-Choice-Image[data-image="fruit"]{
+    background: url(../images/line-icon-fruit.png)no-repeat;
+}
+.fMenu-Choice-Image[data-image="nut"]{
+    background: url(../images/icon-nut.png)no-repeat;
+}
+.fMenu-Choice-Image[data-image="bag"]{
+    background: url(../images/icon-bag.png)no-repeat;
+}
+.fObj-Label-L{
+    color: #ffffff;
+    font: 300 15px / 10px Intro-Light;
+}
+.fObj-Label,
+fObj-Label-L{   
+}
+.fOrder{
+    padding-bottom: 26px;
+    /*border-bottom: rgba(255, 255, 255, 0.1) 1px solid;*/
+}
+.fOrder h3{
+    color: #ffffff;
+    font: 700 60px / 27px Intro-Caps;
+}
+.fOrderTable-Title{
+    color: #4e4e4e;
+    font: 300 16px / 36px Intro-Light;
+    text-align: center;
+}
+.fOrderTable-Title > div,
+.fOrderTable-Obj > div,
+.fOrderTable-Result > div{
+    display: inline-block;
+}
+.fOrderTable-Title > [data-price],
+.fOrderTable-Obj > [data-price],
+.fOrderTable-Result > [data-price]{
+    width: 110px;
+}
+.fOrderTable-Result > [data-price]{
+    /*width: 125px;*/
+}
+
+.fOrderTable-Title > [data-count],
+.fOrderTable-Obj > [data-count],
+.fOrderTable-Result > [data-count]{
+    width: 50px;
+    /*text-align: left;*/
+}
+.fOrderTable-Result > [data-count]{
+    /*width: 65px;*/
+}
+
+.fOrderTable-Title > [data-label],
+.fOrderTable-Obj > [data-label],
+.fOrderTable-Result > [data-label]{
+    width: 330px;
+    text-align: left;
+}
+.fOrderTable-Result > [data-label]{
+    /*width: 300px;*/
+}
+.fOrderTable-Obj,
+.fOrderTable-Result{
+    overflow: hidden;
+}
+.fOrderTable-Obj > div,
+.fOrderTable-Result > div{
+    color: #ffffff;
+    font: 700 16px / 36px Intro-Light;
+}
+.fOrderTable-Result > [data-price]{
+    color: #99cc33;
+}
+.fFloat-L{
+    float: left;
+}
+.fFloat-R{
+    float: right;
+}
+.fClear{
+    clear: both;
+}
+[data-event="cancel"]{
+    background: url(../images/event-cencel.png)no-repeat;
+    width: 13px;
+    height: 14px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+.fOrder-Line{
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.fFormWrapper{
+    /*background: url(../images/form-white-noise.png);*/
+    background: url(../images/form-white-noise-2.png);
+    height: 1000px;
+}
+input{
+    color: #fdfeff;
+    font: 400 14px / 36px Intro;
+    background-color: #131319;
+}
+input[name="name"]{
+    width: 570px;
+    height: 51px;
+    border: none;
+    /*background: url(../images/input-name.png)no-repeat;*/
+    margin-top: 20px; 
+    margin-right: 40px;
+    background-size: cover;
+    padding-left: 60px;
+    background: url(../images/input-name-2.png)no-repeat;
+}
+.fLandLogo{
+    /*background: url(../images/logo.png);*/
+    background: url(../images/logo-2.png)no-repeat;
+    width: 382px;
+    height: 382px;
+    top: 51px;
+}

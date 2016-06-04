@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 SECRET_KEY = '...'
@@ -20,8 +19,6 @@ SECRET_KEY = '...'
 DEBUG = False
 
 ALLOWED_HOSTS = []
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -46,6 +43,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'fruit.urls'
+
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
