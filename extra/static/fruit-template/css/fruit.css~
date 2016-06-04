@@ -146,9 +146,6 @@ body{
 .fPos-Fixed{
     position: fixed;
 }
-.fPos-Abs{
-    position: absolute;
-}
 .fMenu{
     left: 0px;
     top: 1180px;

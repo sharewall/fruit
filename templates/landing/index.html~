@@ -1,1 +1,243 @@
-It works!!
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>{{ page.title }}</title>
+
+<link href="{% static "fruit-template/css/fruit.css" %}" rel="stylesheet"> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+
+</head>
+
+<body>
+    <div class="fMarginAuto fLandWrapper">
+        
+        <div class="fMenu fPos-Fixed">
+            <div class="fMenu-Choice fActive fTextAlign-C" data-event="Fruit">
+                <span class="fDis-Block fMenu-Choice-Image" data-image="fruit"></span>
+                <span class="fMenu-Choice-Label">Фрукты</span>
+            </div>
+            <div class="fMenu-Choice fTextAlign-C" data-event="Nut">
+                <span class="fDis-Block fMenu-Choice-Image" data-image="nut"></span>
+                <span class="fMenu-Choice-Label">Орехи</span>
+            </div>
+            <div class="fMenu-Choice fTextAlign-C" data-event="Bag">
+                <span class="fDis-Block fMenu-Choice-Image" data-image="bag"></span>
+                <span class="fMenu-Choice-Label">Корзина</span>
+            </div>
+        </div>
+        
+        <div class="fLandHeader">
+            <div class="fLandHeader">
+                <span class="fDis-Block fPos-Rel fLandLogo fMarginAuto"></span>
+                <span class="fDis-Block fPos-Rel fLandHeader-H1"></span>
+                <span class="fDis-Block fPos-Rel fLandHeader-BagShadow"></span>
+            </div>
+        </div>
+        
+        <div class="fLandMiddle">
+            
+            <div class="fLandLine fPos-Rel fLandLine-1 fLineFont">
+                <div class="fWrapper-976PX fMarginAuto">
+                    <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="fruit"></span>
+                    <span>Фрукты</span>
+                </div>
+            </div>
+            
+            <div data-content="Fruit">
+                <div class="fWrapper-976PX fMarginAuto">
+                    <div class="fObj fDis-Inline">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Апельсины для сока</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                    <div class="fObj fDis-Inline">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Апельсины для сока</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                    <div class="fObj fDis-Inline">
+                       <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Апельсины для сока</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span> 
+                    </div>
+                    <div class="fObj fDis-Inline">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Апельсины для сока</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                    <div class="fObj fDis-Inline">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Апельсины для сока</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fLandLine fPos-Rel fLandLine-2 fLineFont">
+                <div class="fWrapper-976PX fMarginAuto">
+                    <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="nut"></span>
+                    <span>Орехи</span>
+                </div>
+            </div>
+            
+             <div data-content="Nut" style="margin-top: 57px;">
+                <div class="fWrapper-976PX fMarginAuto">
+                    <div class="fObj fDis-Inline" style="height:216px;">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Грецкий орех</span>
+                        <br/>
+                        <span class="fObj-Label-L">очищенный, половинки</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="nut" style="bottom:216px;">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                    <div class="fObj fDis-Inline" style="height:216px;">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Грецкий орех</span>
+                        <br/>
+                        <span class="fObj-Label-L">очищенный, половинки</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="nut" style="bottom:216px;">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                    <div class="fObj fDis-Inline" style="height:216px;">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Грецкий орех</span>
+                        <br/>
+                        <span class="fObj-Label-L">очищенный, половинки</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="nut" style="bottom:216px;">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                    <div class="fObj fDis-Inline" style="height:216px;">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Грецкий орех</span>
+                        <br/>
+                        <span class="fObj-Label-L">очищенный, половинки</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="nut" style="bottom:216px;">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                    <div class="fObj fDis-Inline" style="height:216px;">
+                        <span class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;"></span>
+                        <span class="fObj-Label">Грецкий орех</span>
+                        <br/>
+                        <span class="fObj-Label-L">очищенный, половинки</span>
+                        <span class="fObj-Price fPos-Rel fDis-Block" data-image="nut" style="bottom:216px;">
+                            <span class="fObj-Price-B">999</span>
+                            <span class="fObj-Price-L">руб/кг</span>
+                        </span>
+                    </div>
+                 </div>
+            </div>
+            
+            <div class="fLandLine fPos-Rel fLandLine-2 fLineFont">
+                <div class="fMarginAuto" style="width:1006px;">
+                    <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="bag"></span>
+                    <span>Ваша корзина</span>
+                </div>
+            </div>
+            
+            <div data-content="Bag" style="margin-top: 57px;">
+                <div class="fOrder fMarginAuto fTextAlign-C" style="width:1006px;">
+                    <div class="fDis-Inline fFloat-L" data-order="fruit" style="width:500px;">
+                        <h3>Фрукты:</h3>
+                        <div class="fOrderTable-Title">
+                            <div data-label>Наименование</div>
+                            <div data-count>Кол-во</div>
+                            <div data-price>Цена(руб.)</div>
+                        </div>
+                        <div class="fOrderTable-Obj">
+                            <div data-label>
+                            <span>1.Наименование товара</span>
+                            </div>
+                            <div data-count>99</div>
+                            <div data-price>99 999</div>
+                        </div>
+                        <div class="fOrderTable-Obj">
+                            <div data-label>
+                            <span>2.Наименование товара</span>
+                            <span class="fDis-Inline" data-event="cancel"></span>
+                            </div>
+                            <div data-count>99</div>
+                            <div data-price>99 999</div>
+                        </div>
+                        <div class="fOrderTable-Result">
+                            <div data-label></div>
+                            <div data-count>9999</div>
+                            <div data-price>999 999</div>
+                        </div>
+                    </div>
+                    <div class="fDis-Inline" data-order="nut" style="width:500px;">
+                        <h3>Орехи:</h3>
+                        <div class="fOrderTable-Title">
+                            <div data-label>Наименование</div>
+                            <div data-count>Кол-во</div>
+                            <div data-price>Цена(руб.)</div>
+                        </div>
+                        <div class="fOrderTable-Obj">
+                            <div data-label>1.Наименование товара</div>
+                            <div data-count>99</div>
+                            <div data-price>99 999</div>
+                        </div>
+                        <div class="fOrderTable-Result">
+                            <div data-label></div>
+                            <div data-count>9999</div>
+                            <div data-price>999 999</div>
+                        </div>
+                    </div>
+                    <div class="fClear"></div>
+                    <div class="fOrder-Line" style="margin-top: 27px;"></div>
+                </div>
+            </div>
+            <div class="fClear"></div>
+            
+            <div data-content="Form" class="fFormWrapper fDis-Rel">
+                <div class="fForm fMarginAuto fTextAlign-C" style="width:1006px;">
+                    <input name="name" type="text" placeholder="Ваше имя"> 
+                    
+                    <div class="fFloat-R" style="margin-top: 20px;" data-summ>
+                        <span style="color: #ffffff;font: 700 30px / 36px Intro-Light;">Итого: </span>
+                        <span style="color: #99cc33;font: 700 30px / 36px Intro-Light;">999 999 руб.</span>
+                    </div>
+                    <div class="fClear"></div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</body>
+
+</html>
