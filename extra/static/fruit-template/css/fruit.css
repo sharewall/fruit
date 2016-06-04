@@ -10,6 +10,10 @@
     font-family: Intro-Bold;
     src: url(../fonts/Intro-Bold.otf);
 }
+@font-face{
+    font-family: Intro;
+    src: url(../fonts/Intro-Book.otf);
+}
 html, 
 body{
     height: 100%;
@@ -110,31 +114,49 @@ body{
 .fObj{
     height: 196px;
     width: 240px;
-    overflow: hidden;
-    margin-top: 73px;
+    /*margin-top: 73px;*/
+    text-align: center;
 }
 .fObj-Image{
     width: 170px;
     height: 170px;
     border-radius: 100px;
+    margin: auto;
+}
+.fObj-Image.fActive[data-image="fruit"]{
+    border: 7px solid rgb(146, 164, 6);
+}
+.fObj-Image.fActive[data-image="nut"]{
+    border: 7px solid #b28758;
+}
+.fObj-Image:hover .fObj-Detail:not(.fDisabled){
+    opacity: 1;
 }
 .fObj-Price{
     color: #ffffff;
     width: 74px;
     height: 74px;
-    bottom: 196px;
-    left: 130px;
+    bottom: 210px;
+    left: 160px;
     padding-top: 20px; 
     padding-left: 12px;
+    text-align: left;
 }
 .fObj-Price[data-image="fruit"]{
     background: url(../images/fruit-price.png)no-repeat;
 }
 .fObj-Price[data-image="nut"]{
     background: url(../images/nut-price.png)no-repeat;
+    bottom: 220px;
+}
+.fObj-Price[data-image="empty"]{
+    background: url(../images/empty-price.png)no-repeat;
 }
 .fObj-Price-B{
     font: 700 25px / 19px Intro-Bold;
+}
+.fObj-Price-B.fActive{
+    font: 700 20px / 19px Intro-Bold;
 }
 .fObj-Price-L{
     font: 700 15px / 19px Intro-Bold;
@@ -151,7 +173,8 @@ body{
 }
 .fMenu{
     left: 0px;
-    top: 1180px;
+    top: 5%;
+    width: 165px;
 }
 .fMenu-Choice,
 .fMenu-Choice.fActive{
@@ -186,13 +209,16 @@ body{
 .fMenu-Choice-Image[data-image="bag"]{
     background: url(../images/icon-bag.png)no-repeat;
 }
+
+.fObj-Label,
+.fObj-Label-L{ 
+    display: block;
+}
 .fObj-Label-L{
     color: #ffffff;
     font: 300 15px / 10px Intro-Light;
 }
-.fObj-Label,
-fObj-Label-L{   
-}
+
 .fOrder{
     padding-bottom: 26px;
     /*border-bottom: rgba(255, 255, 255, 0.1) 1px solid;*/
@@ -223,7 +249,7 @@ fObj-Label-L{
 .fOrderTable-Title > [data-count],
 .fOrderTable-Obj > [data-count],
 .fOrderTable-Result > [data-count]{
-    width: 50px;
+    width: 70px;
     /*text-align: left;*/
 }
 .fOrderTable-Result > [data-count]{
@@ -233,15 +259,24 @@ fObj-Label-L{
 .fOrderTable-Title > [data-label],
 .fOrderTable-Obj > [data-label],
 .fOrderTable-Result > [data-label]{
-    width: 330px;
+    width: 300px;
     text-align: left;
 }
 .fOrderTable-Result > [data-label]{
     /*width: 300px;*/
 }
+.fOrderTable-Title > [data-label]{
+    width: 280px;
+    padding-left: 30px;
+}
+
 .fOrderTable-Obj,
 .fOrderTable-Result{
     overflow: hidden;
+    padding-left: 10px;
+}
+.fOrderTable-Obj.fActive{
+    background: url(../images/ordertable-obj-active-bg.png);
 }
 .fOrderTable-Obj > div,
 .fOrderTable-Result > div{
@@ -267,35 +302,219 @@ fObj-Label-L{
     vertical-align: middle;
     margin-left: 5px;
 }
+[data-event="minus"]{
+    color: #ff4343;
+    font: 700 16px / 36px Intro;
+    vertical-align: middle;
+}
+[data-event="plus"]{
+    color: #99cc33;
+    font: 700 16px / 36px Intro;
+    vertical-align: middle;
+}
 .fOrder-Line{
     height: 1px;
     background-color: rgba(255, 255, 255, 0.1);
 }
 .fFormWrapper{
     /*background: url(../images/form-white-noise.png);*/
-    background: url(../images/form-white-noise-2.png);
-    height: 1000px;
+    background: url(../images/form-white-noise-4.png)no-repeat;
+    height: 850px;
 }
-input{
+
+.fFormOrder input:required{
+    border-color: #2b2b2b;
+    box-shadow: none;
+}
+.fFormOrder input:required:focus {
+}
+.fFormOrder input:required:hover {
+}
+.fFormOrder input:valid {
+}
+.fFormOrder input:invalid {
+    /*box-shadow: 2px 0px 2px rgb(43, 43, 43);*/
+}
+
+.fFormOrder input{
     color: #fdfeff;
     font: 400 14px / 36px Intro;
     background-color: #131319;
-}
-input[name="name"]{
-    width: 570px;
-    height: 51px;
     border: none;
-    /*background: url(../images/input-name.png)no-repeat;*/
+    outline: none;
+    display: block;
     margin-top: 20px; 
-    margin-right: 40px;
+    margin-left: 20px;
     background-size: cover;
     padding-left: 60px;
+    height: 51px;
+}
+.fFormOrder input[name="name"]{
+    width: 570px;
     background: url(../images/input-name-2.png)no-repeat;
 }
+.fFormOrder input[name="city"]{
+    width: 126px;
+    background: url(../images/input-city.png)no-repeat;
+}
+.fFormOrder input[name="street"]{
+    width: 93px;
+    background: url(../images/input-street.png)no-repeat;
+}
+.fFormOrder input[name="house"],
+.fFormOrder input[name="corps"],
+.fFormOrder input[name="building"],
+.fFormOrder input[name="number"]{
+    background: url(../images/input-house.png)no-repeat;
+    width: 35px;
+    padding-left: 11px;
+}
+.fFormOrder input[name="phone"]{
+    background: url(../images/input-phone.png);
+    width: 570px;
+}
+.fFormOrder input[name="email"]{
+    background: url(../images/input-email.png);
+    width: 570px;
+}
+.fFormOrder input[name="company"]{
+    background: url(../images/input-company.png);
+    width: 570px;
+}
+
 .fLandLogo{
     /*background: url(../images/logo.png);*/
     background: url(../images/logo-2.png)no-repeat;
     width: 382px;
     height: 382px;
     top: 51px;
+}
+.fTest{
+    background: url(../images/noise-3.png);
+}
+[data-event]{
+    cursor: pointer;
+}
+.fForm-Faq{
+    color: #2b2b2b;
+    font: 400 14px / 24px Intro-Bold;   
+    text-align: left;
+    margin-top: 20px;
+}
+.fOrder-Line-Faq{
+    background: url(../images/line-icon-form-faq.png);
+    height: 1px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+.fRed{
+    color: #b40f0f;
+}
+
+::-webkit-input-placeholder {
+   color: #fdfeff;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fdfeff;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fdfeff; 
+}
+
+:-ms-input-placeholder {  
+   color: #fdfeff; 
+}
+
+.fHid{
+    opacity:0!important; 
+    margin-left:99999px!important; 
+    height:1px!important; 
+    display:none!important;
+}
+.fFormOrder-Submit{
+    background: url(../images/input-submit.png)no-repeat;
+    color: #ffffff;
+    font: 700 40px / 130px Intro-Caps;
+    width: 985px;
+    height: 130px;
+    margin-top: 33px;
+    margin-left: 20px;
+}
+.fFormOrder-Submit:hover{
+    background: url(../images/input-submit-hover.png)no-repeat;
+}
+.fFormOrder-Success{
+    color: #2d2d31;
+    font: 700 40px / 36px Intro;   
+    margin-top: 31px;
+}
+.fObj-Detail{
+    top: 105px;
+    background: url(../images/obj-detail-wrapper.png)no-repeat;
+    width: 168px;
+    height: 66px;
+    opacity: 0;
+}
+.fObj-Detail:not(.fDisabled):hover{
+    opacity: 1;
+}
+.fObj-Ui-Wrapper{
+    padding-top: 10px;
+}
+.fObj-Ui-Wrapper span{
+    vertical-align: bottom;
+}
+.fObj-Ui[data-ui="minus"],
+.fObj-Ui[data-ui="plus"]
+{
+    color: #ffffff;
+    font: 700 30px / 27px Intro;
+    cursor: pointer;
+}
+.fObj-Ui[data-ui="plus"]{
+    
+}
+.fObj-Ui[data-ui="counter"]{
+    color: #131313;
+    font: 700 24px / 37px Intro;
+    background-color: #ffffff;
+    width: 69px;
+    height: 37px;
+    border-radius: 30px;
+}
+.fObj-Cancel{
+    color: #e35200;
+    font: 700 12px Intro;
+    width: 130px;
+    bottom: -15px;
+    left: 25%;
+    cursor: pointer;
+}
+.fObj-Count{
+    height: 28px;
+    color: #92a406;
+    top: 0px;
+    left: -150px;
+}
+.fObj-Count-B{
+    font: 700 35px / 27px Intro;
+}
+.fObj-Count-L{
+    font: 700 15px / 27px Intro;
+    top: -5px;
+    /*right: -21px;*/
+    right: -12px;
+}
+.fOpacity-4{
+    opacity: 0.4;
+}
+[data-obj="disabled"]{
+    color: #e35200;
+    font: 700 14.5px / 40px Intro-Caps;
+    z-index: 1;
+}
+.fDisabled{
+    pointer-events: none;
 }
