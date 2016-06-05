@@ -368,7 +368,7 @@
                         <div class="fClear"></div>
                         <input name="phone" type="text" placeholder="Ваше телефон" required>
                         <input name="email" type="email" placeholder="Ваше e-mail" required>
-                        <input name="company" type="text" placeholder="Название компании" required>
+                        <input name="company" type="text" placeholder="Название компании">
                         <input type="submit" hidden="hidden" class="fHid">
                         
                     </form>
@@ -426,7 +426,55 @@
                 }
                
            });
-            
+
+          $('form').submit(function(e){
+            console.log('submit event');
+
+            $.ajax({
+              url: '/', 
+              type: "POST", 
+              data: $('form').serialize(), 
+              success: function(response, status, jqXHR) { 
+
+                if(response == 'OK'){
+                  $('.fFormOrder-Success').text('Благодарим за заказ!').fadeIn('slow');
+
+                  window.setTimeout(function(){
+                    $('.fFormOrder-Success').text('').fadeOut('slow');
+                    (location.search.split('?next=').length > 1 ? window.location = location.search.split('?next=')[1] : window.location = '/');
+                  },4000);
+                }else{
+                  $('.fFormOrder-Success').text('Ошибка!').fadeIn('slow');
+
+                  window.setTimeout(function(){
+                    $('.fFormOrder-Success').text('').fadeOut('slow');
+                  },2000);
+                }
+
+              }
+            });
+
+            return false;
+          });
+
+          $('[data-event="submit"]').click(function(){
+            $('input[type="submit"]').click();
+          });
+
+        });
+
+        function csrfSafeMethod(method) {
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        var csrftoken = document.cookie.replace(/(?:(?:^|.*;\s*)csrftoken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
         });
         
     </script>

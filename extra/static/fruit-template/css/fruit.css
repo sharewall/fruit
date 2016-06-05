@@ -175,6 +175,7 @@ body{
     left: 0px;
     top: 5%;
     width: 165px;
+    z-index: 1;
 }
 .fMenu-Choice,
 .fMenu-Choice.fActive{
@@ -449,6 +450,7 @@ body{
     color: #2d2d31;
     font: 700 40px / 36px Intro;   
     margin-top: 31px;
+    display: none;
 }
 .fObj-Detail{
     top: 105px;
