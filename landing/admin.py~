@@ -33,7 +33,7 @@ class NutTypeAdmin(admin.ModelAdmin):
     readonly_fields=('id')
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display=('label', 'the_type', 'getThubmnail', 'count', 'price', 'in_stock', 'id')
+    list_display=('label', 'getNutType', 'the_type', 'getThubmnail', 'count', 'price', 'in_stock', 'id')
     list_filter=('the_type', 'in_stock', 'nut_type__label')
     search_fields=['id', 'label']
     fields=('id', 'getImage', 'image', ('label','the_type', 'nut_type'),('price','count','in_stock'))

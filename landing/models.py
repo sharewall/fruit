@@ -70,7 +70,12 @@ class Order(models.Model):
     class Meta:
         db_table = 'Order'
 
-    #date = models.DateField('date', auto_now_add=True)
+    date_create = models.DateTimeField('Дата создания', default=datetime.datetime.now)
+    #date_update = models.DateTimeField('date_update', auto_now=True)
+
+    def getCreateDate(self):
+        return str(self.date_create.strftime('%d.%m.%Y %H:%M'))
+    getCreateDate.short_description = "Дата создания"
 
     name = models.CharField('Имя', max_length=200, blank=True, default='')
     street = models.CharField('Улица', max_length=200, blank=True, default='')
@@ -81,6 +86,7 @@ class Order(models.Model):
     phone = models.CharField('Телефон', max_length=200, blank=True, default='')
     email = models.CharField('E-mail', max_length=200, blank=True, default='')
     company = models.CharField('Название компании', max_length=200, blank=True, default='')
+    order_list = models.TextField('Лист заказа', blank=True, default='')
     complete = models.BooleanField('Выполнен', editable=True, default=False)
 
     def __str__(self):

@@ -178,6 +178,7 @@
             <div data-content="Form" class="fFormWrapper fDis-Rel">
                 <div class="fForm fMarginAuto fTextAlign-C" style="width:1006px;">
                     <form class="fFloat-L fFormOrder">
+                        {% csrf_token %}
                         <input name="name" type="text" placeholder="Ваше имя" required>
                         <input class="fFloat-L" name="city" type="text" placeholder="Город" value="Москва" disabled>
                         <input class="fFloat-L" name="street" type="text" placeholder="Улица" required>
@@ -260,6 +261,11 @@
               success: function(response, status, jqXHR) { 
 
                 if(response == 'OK'){
+
+                  $('html, body').animate({
+                      scrollTop: $(document).height()
+                  }, 500);
+
                   $('.fFormOrder-Success').text('Благодарим за заказ!').fadeIn('slow');
 
                   window.setTimeout(function(){
@@ -436,7 +442,7 @@
                 //
                 $('.fOrderTable-Obj[data-pk="'+$obj.data('pk')+'"]').remove();
                 //
-                $.each($('[data-order="'+$objImage.data('image')+'"] [data-num]'), function(i, o){ $(o).find('[data-labnum]').text(i+1); });
+                $.each($('[data-order="'+$objImage.data('image')+'"] [data-num]'), function(i, o){ $(o).data('num', i+1); $(o).find('[data-labnum]').text(i+1); });
               }
             }else{
               $objImage.removeClass('fActive');
@@ -450,7 +456,7 @@
               //
               $('.fOrderTable-Obj[data-pk="'+$obj.data('pk')+'"]').remove();
               //
-              $.each($('[data-order="'+$objImage.data('image')+'"] [data-num]'), function(i, o){ $(o).find('[data-labnum]').text(i+1); });
+              $.each($('[data-order="'+$objImage.data('image')+'"] [data-num]'), function(i, o){ $(o).data('num', i+1); $(o).find('[data-labnum]').text(i+1); });
             }
 
           });

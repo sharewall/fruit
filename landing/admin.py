@@ -41,11 +41,11 @@ class ProductAdmin(admin.ModelAdmin):
     actions=[yesProduct, noProduct]
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display=('name', 'phone', 'email', 'company', 'complete', 'id')
+    list_display=('name', 'phone', 'email', 'company', 'getCreateDate', 'complete', 'id')
     list_filter=('company', 'complete')
     search_fields=['id', 'name']
-    fields=('id', ('name','company'),('phone','email','complete'),('street','house','corps','building','number'))
-    readonly_fields=('id')
+    fields=('id', 'getCreateDate', ('name','company'),('phone','email','complete'),('street','house','corps','building','number'), 'order_list')
+    readonly_fields=('id', 'getCreateDate')
     actions=[yesOrder, noOrder]
 
 
