@@ -26,7 +26,21 @@ def index(request):
             return HttpResponse('Error')
 
     else:
+        all_products = models.Product.objects.all()
+        fruits = []
+        nuts = []
+
+        for product in all_products:
+            if product.the_type == "FRU":
+                fruits.append(product)
+
+            else:
+                nuts.append(product)
+
+        
         return render(request, template_name,
         {
-            "page": { "title": title }
+            "page": { "title": title },
+            'fruits': fruits,
+            'nuts': nuts
         })

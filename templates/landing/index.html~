@@ -179,6 +179,7 @@
                 <div class="fForm fMarginAuto fTextAlign-C" style="width:1006px;">
                     <form class="fFloat-L fFormOrder">
                         {% csrf_token %}
+                        <textarea hidden required name="order_list" class="fHid"></textarea>
                         <input name="name" type="text" placeholder="Ваше имя" required>
                         <input class="fFloat-L" name="city" type="text" placeholder="Город" value="Москва" disabled>
                         <input class="fFloat-L" name="street" type="text" placeholder="Улица" required>
@@ -287,7 +288,34 @@
           });
 
           $('[data-event="submit"]').click(function(){
+
+            var fruits = '';
+            var nuts = '';
+
+            $.each($('[data-order="fruit"] [data-pk]'), function(i, obj){  
+              $obj = $(obj);
+              var pk = $obj.data('pk');
+              var label = $obj.find('[data-lablab]').text();
+              var count = $obj.find('[data-count] > :not([data-event])').text();
+              var price = $obj.find('[data-price]').text();
+
+              fruits += pk+':'+label+count+':'+price+'\n';
+            });
+
+            $.each($('[data-order="nut"] [data-pk]'), function(i, obj){  
+              $obj = $(obj);
+              var pk = $obj.data('pk');
+              var label = $obj.find('[data-lablab]').text();
+              var count = $obj.find('[data-count] > :not([data-event])').text();
+              var price = $obj.find('[data-price]').text();
+
+              nuts += pk+':'+label+count+':'+price+'\n';
+            });
+
+            $('textarea[name="order_list"]').val('Фрукты\n'+fruits+'\nОрехи\n'+nuts);
+
             $('input[type="submit"]').click();
+
           });
 
           $('[data-ui="plus"]').click(function(){

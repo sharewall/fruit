@@ -16,9 +16,10 @@ def index(request):
         phone = request.POST.get('phone', '')
         email = request.POST.get('email', '')
         company = request.POST.get('company', '')
+        order_list = request.POST.get('order_list', '')
 
         try:
-            models.Order.objects.create(name=name, street=street, house=house, corps=corps, building=building, number=number, phone=phone, email=email, company=company)
+            models.Order.objects.create(name=name, street=street, house=house, corps=corps, building=building, number=number, phone=phone, email=email, company=company, order_list=order_list)
 
             return HttpResponse('OK')
 
