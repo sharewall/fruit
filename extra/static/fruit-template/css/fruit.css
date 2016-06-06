@@ -20,7 +20,8 @@ body{
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #131319;
+    background-color: #282828;
+    /*background: url(../images/fruit-noise-3.png);*/
     /*background: url(../images/pattern_noise.png);
     background-size: contain;*/
 }
@@ -46,7 +47,8 @@ body{
 .fLandHeader{
     /*background: url(../images/land-header.png)no-repeat;*/
     /*background: url(../images/land-head-1.png)no-repeat; test*/
-    height: 1135px;
+    background: url(../images/fruit-logo-2.png)no-repeat;
+    height: 898px;
 }
 .fLandHeader-H1{
     background: url(../images/land-head-h1.png)no-repeat;
@@ -75,7 +77,7 @@ body{
     /*background: url(../images/land-middle-1.png)no-repeat;*/
     /*background: url(../images/land-middle-2.png)no-repeat; test*/
     /*height: 3343px; not test*/
-    margin-top: -360px;
+    margin-top: -120px;
 }
 .fLineFont{
     color: #ffffff;
@@ -408,7 +410,7 @@ body{
     top: 51px;
 }
 .fTest{
-    background: url(../images/noise-3.png);
+    background: url(../images/fruit-noise-3.png);
 }
 [data-event]{
     cursor: pointer;

@@ -39,14 +39,11 @@
         </div>
         
         <div class="fLandHeader">
-            <div class="fLandHeader">
-                <span class="fDis-Block fPos-Rel fLandLogo fMarginAuto"></span>
-                <span class="fDis-Block fPos-Rel fLandHeader-H1"></span>
-                <span class="fDis-Block fPos-Rel fLandHeader-BagShadow"></span>
-            </div>
+              <span class="fDis-Block fPos-Rel fLandLogo fMarginAuto"></span>
         </div>
         
         <div class="fLandMiddle">
+          <div class="fTest">
             
             <div data-content="menuFruit" class="fLandLine fPos-Rel fLandLine-1 fLineFont">
                 <div class="fWrapper-976PX fMarginAuto">
@@ -254,6 +251,7 @@
             
         </div>
         
+        </div>
     </div>
     
     <script>
@@ -382,8 +380,6 @@
               $objImage.addClass('fOpacity-4');
             }
 
-            //console.log($objImage.data('image'));
-
           });
 
           $('[data-ui="minus"]').click(function(){
@@ -451,6 +447,7 @@
                 $objPrice.text(iInitDataPrice);
                 $objHelp.text('руб/кг');
 
+                //
                 $('.fOrderTable-Obj[data-pk="'+$obj.data('pk')+'"]').remove();
               }
             }else{
@@ -462,6 +459,7 @@
               $objPrice.text(iInitDataPrice);
               $objHelp.text('руб/кг');
 
+              //
               $('.fOrderTable-Obj[data-pk="'+$obj.data('pk')+'"]').remove();
             }
 
