@@ -542,3 +542,9 @@ body{
 .fDis-None{
     display: none;
 }
+.fLand-H1{
+    font: 700 37px Intro-Caps;
+    top: 390px;
+    left: 500px;
+    color: rgba(102, 53, 27, 0.86);
+}

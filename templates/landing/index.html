@@ -41,6 +41,7 @@
         
         <div class="fLandHeader">
               <span class="fDis-Block fPos-Rel fLandLogo fMarginAuto"></span>
+              <h1 class="fDis-Inline fPos-Rel fLand-H1 fMarginAuto">Доставка продуктов домой и на работу</h1>
         </div>
         
         <div class="fLandMiddle">
@@ -146,18 +147,6 @@
                             <div data-count>Кол-во</div>
                             <div data-price>Цена(руб.)</div>
                         </div>
-                        <div class="fOrderTable-Obj" data-pk="2" data-num="1">
-                            <div data-label>
-                                <span>1. Наименование товара</span>
-                                <span class="fDis-Inline" data-event="cancel"></span>
-                            </div>
-                            <div data-count>
-                                <span class="fDis-Inline" data-event="minus">-</span>
-                                <span style="margin-left: 5px; margin-right: 4px;">0</span>
-                                <span class="fDis-Inline" data-event="plus">+</span>
-                            </div>
-                            <div data-price>0</div>
-                        </div>
                         <div class="fOrderTable-Result">
                             <div data-label></div>
                             <div data-count>0</div>
@@ -171,30 +160,6 @@
                             <div data-label>Наименование</div>
                             <div data-count>Кол-во</div>
                             <div data-price>Цена(руб.)</div>
-                        </div>
-                        <div class="fOrderTable-Obj" data-pk="6" data-num="1">
-                            <div data-label>
-                                <span>1. Наименование товара</span>
-                                <span class="fDis-Inline" data-event="cancel"></span>
-                            </div>
-                            <div data-count>
-                                <span class="fDis-Inline" data-event="minus">-</span>
-                                <span style="margin-left: 5px; margin-right: 4px;">0</span>
-                                <span class="fDis-Inline" data-event="plus">+</span>
-                            </div>
-                            <div data-price>0</div>
-                        </div>
-                        <div class="fOrderTable-Obj" data-pk="7" data-num="2">
-                            <div data-label>
-                                <span>2. Наименование товара</span>
-                                <span class="fDis-Inline" data-event="cancel"></span>
-                            </div>
-                            <div data-count>
-                                <span class="fDis-Inline" data-event="minus">-</span>
-                                <span style="margin-left: 5px; margin-right: 4px;">0</span>
-                                <span class="fDis-Inline" data-event="plus">+</span>
-                            </div>
-                            <div data-price>0</div>
                         </div>
                         <div class="fOrderTable-Result">
                             <div data-label></div>
@@ -323,6 +288,8 @@
 
             $parent = $(this).parent();
             $obj = $parent.closest('.fObj');
+            $objLabel = $obj.find('.fObj-Label').clone().children().remove().end().text();
+            $objPk = $obj.data('pk');
             $objHelp = $obj.find('[data-help]');
             $objPrice = $obj.find('[data-price]');
             $objImage = $obj.find('.fObj-Image');
@@ -362,15 +329,33 @@
                 $orderDataPrice = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').find('[data-price]');
                 $orderDataPrice.text(iDataPrice);
 
-                $orderTableResult = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').parent().find('.fOrderTable-Result');
+              }else{
+                $dataOrder = $('[data-order="'+$objImage.data('image')+'"]');
 
-                $resultCount = $orderTableResult.find('[data-count]');
-                $resultCount.text(parseInt($resultCount.text())+1);
+                var iDataNum = parseInt($dataOrder.find('[data-num]:last').data('num'));
+                if(iDataNum){
+                  iDataNum++;
+                  var html = '<div class="fOrderTable-Obj" data-pk="'+$objPk+'" data-num="'+iDataNum+'"><div data-label=""><span data-labnum>'+iDataNum+'.</span><span data-lablab> '+$objLabel+'</span><span class="fDis-Inline" data-event="cancel" ></span></div><div data-count=""><span class="fDis-Inline" data-event="minus" >-</span><span style="margin-left: 5px; margin-right: 4px;">1</span><span class="fDis-Inline" data-event="plus">+</span></div><div data-price="">'+iInitDataPrice+'</div></div>'
+                  $new = $dataOrder.find('[data-num]:last').after(html);
+                  $new.next().find('[data-event]').click(dataEvent);
 
-                $resultPrice = $orderTableResult.find('[data-price]');
-                $resultPrice.text(parseInt($resultPrice.text())+iInitDataPrice);
+                }else{
+                  iDataNum=1;
+                  var html = '<div class="fOrderTable-Obj" data-pk="'+$objPk+'" data-num="'+iDataNum+'"><div data-label=""><span data-labnum="">'+iDataNum+'.</span><span data-lablab=""> '+$objLabel+'</span><span class="fDis-Inline" data-event="cancel" ></span></div><div data-count=""><span class="fDis-Inline" data-event="minus">-</span><span style="margin-left: 5px; margin-right: 4px;">1</span><span class="fDis-Inline" data-event="plus">+</span></div><div data-price="">'+iInitDataPrice+'</div></div>'
+                  //$dataOrder.find('.fOrderTable-Title').after(html);
+                  $new = $dataOrder.find('.fOrderTable-Title').after(html);
+                  $new.next().find('[data-event]').click(dataEvent);
+                }
               }
 
+              //
+              $orderTableResult = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').parent().find('.fOrderTable-Result');
+
+              $resultCount = $orderTableResult.find('[data-count]');
+              $resultCount.text(parseInt($resultCount.text())+1);
+
+              $resultPrice = $orderTableResult.find('[data-price]');
+              $resultPrice.text(parseInt($resultPrice.text())+iInitDataPrice);
               //
               var iTotal = parseInt($('[data-total]').text());
               $('[data-total]').text(iTotal + iInitDataPrice);
@@ -450,6 +435,8 @@
 
                 //
                 $('.fOrderTable-Obj[data-pk="'+$obj.data('pk')+'"]').remove();
+                //
+                $.each($('[data-order="'+$objImage.data('image')+'"] [data-num]'), function(i, o){ $(o).data('num', i+1); $(o).find('[data-labnum]').text(i+1); });
               }
             }else{
               $objImage.removeClass('fActive');
@@ -462,6 +449,8 @@
 
               //
               $('.fOrderTable-Obj[data-pk="'+$obj.data('pk')+'"]').remove();
+              //
+              $.each($('[data-order="'+$objImage.data('image')+'"] [data-num]'), function(i, o){ $(o).data('num', i+1); $(o).find('[data-labnum]').text(i+1); });
             }
 
           });
@@ -480,15 +469,25 @@
 
           });
 
-          $('.fOrderTable-Obj [data-event]').click(function(){
-            $this = $(this);
-            $orderObj = $this.closest('.fOrderTable-Obj');
-            $obj = $('.fObj[data-pk="'+$orderObj.data('pk')+'"]');
-            $obj.find('[data-ui="'+$this.data('event')+'"]').click();
-          });
+          $('.fOrderTable-Obj').on('click', '[data-event]', dataEvent);
+
+          //$('.fOrderTable-Obj [data-event]').click(function(){
+          //  $this = $(this);
+          //  $orderObj = $this.closest('.fOrderTable-Obj');
+          //  $obj = $('.fObj[data-pk="'+$orderObj.data('pk')+'"]');
+          //  $obj.find('[data-ui="'+$this.data('event')+'"]').click();
+          //});
+
 
         //
         });
+
+        function dataEvent(){
+          $this = $(this);
+          $orderObj = $this.closest('.fOrderTable-Obj');
+          $obj = $('.fObj[data-pk="'+$orderObj.data('pk')+'"]');
+          $obj.find('[data-ui="'+$this.data('event')+'"]').click();
+        }
 
         function csrfSafeMethod(method) {
             return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
