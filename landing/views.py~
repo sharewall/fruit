@@ -17,7 +17,13 @@ def index(request):
         email = request.POST.get('email', '')
         company = request.POST.get('company', '')
 
-        return HttpResponse('OK')
+        try:
+            models.Order.objects.create(name=name, street=street, house=house, corps=corps, building=building, number=number, phone=phone, email=email, company=company)
+
+            return HttpResponse('OK')
+
+        except:
+            return HttpResponse('Error')
 
     else:
         return render(request, template_name,

@@ -24,15 +24,15 @@
     <div class="fMarginAuto fLandWrapper">
         
         <div class="fMenu fPos-Fixed">
-            <div class="fMenu-Choice fActive fTextAlign-C" data-event="Fruit">
+            <div class="fMenu-Choice fActive fTextAlign-C" data-event="menuFruit">
                 <span class="fDis-Block fMenu-Choice-Image" data-image="fruit"></span>
                 <span class="fMenu-Choice-Label">Фрукты</span>
             </div>
-            <div class="fMenu-Choice fTextAlign-C" data-event="Nut">
+            <div class="fMenu-Choice fTextAlign-C" data-event="menuNut">
                 <span class="fDis-Block fMenu-Choice-Image" data-image="nut"></span>
                 <span class="fMenu-Choice-Label">Орехи</span>
             </div>
-            <div class="fMenu-Choice fTextAlign-C" data-event="Bag">
+            <div class="fMenu-Choice fTextAlign-C" data-event="menuBag">
                 <span class="fDis-Block fMenu-Choice-Image" data-image="bag"></span>
                 <span class="fMenu-Choice-Label">Корзина</span>
             </div>
@@ -48,7 +48,7 @@
         
         <div class="fLandMiddle">
             
-            <div class="fLandLine fPos-Rel fLandLine-1 fLineFont">
+            <div data-content="menuFruit" class="fLandLine fPos-Rel fLandLine-1 fLineFont">
                 <div class="fWrapper-976PX fMarginAuto">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="fruit"></span>
                     <span>Фрукты</span>
@@ -58,113 +58,39 @@
             <div data-content="Fruit">
                 <div class="fWrapper-976PX fMarginAuto">
                     
-                     <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;">
+                    {% for fruit in fruits %}
+                    <div class="fObj fDis-Inline {% if fruit.count < 1 or not fruit.in_stock %}fDisabled fOpacity-4{% endif %}">
+                      <div class="fDis-Block fObj-Image" style="background: url({{ fruit.image.url }})no-repeat;" data-image="fruit">
                             <div class="fPos-Rel fObj-Detail">
                                 <div class="fObj-Ui-Wrapper fTextAlign-C">
                                     <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
+                                    <span class="fObj-Ui fDis-Inline" data-reserve="{{ fruit.count }}" data-ui="counter">0</span>
                                     <span class="fObj-Ui" data-ui="plus">+</span>
                                 </div>
                             </div>
+                            {% if fruit.count < 1 or not fruit.in_stock %}<span data-obj="disabled">Товар отсутствует</span>{% endif %}
                         </div>
                         
-                        <span class="fObj-Label fPos-Rel">Апельсины для сока</span>
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
-                            <span class="fObj-Price-B">999</span>
-                            <span class="fObj-Price-L">руб/кг</span>
-                        </div>
-                    </div>
-                    
-                    <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;">
-                            <div class="fPos-Rel fObj-Detail">
-                                <div class="fObj-Ui-Wrapper fTextAlign-C">
-                                    <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
-                                    <span class="fObj-Ui" data-ui="plus">+</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <span class="fObj-Label fPos-Rel">Апельсины для сока</span>
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
-                            <span class="fObj-Price-B">999</span>
-                            <span class="fObj-Price-L">руб/кг</span>
-                        </div>
-                    </div>
-                    
-                    <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;">
-                            <div class="fPos-Rel fObj-Detail">
-                                <div class="fObj-Ui-Wrapper fTextAlign-C">
-                                    <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
-                                    <span class="fObj-Ui" data-ui="plus">+</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <span class="fObj-Label fPos-Rel">Апельсины для сока</span>
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
-                            <span class="fObj-Price-B">999</span>
-                            <span class="fObj-Price-L">руб/кг</span>
-                        </div>
-                    </div>
-                    
-                    <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fActive fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;" data-image="fruit">
-                            <div class="fPos-Rel fObj-Detail">
-                                <div class="fObj-Ui-Wrapper fTextAlign-C">
-                                    <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
-                                    <span class="fObj-Ui" data-ui="plus">+</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <span class="fObj-Label fPos-Rel">Апельсины для сока
-                            <span class="fObj-Cancel fPos-Abs" data-obj="cancel">Отменить выбор</span>
+                        <span class="fObj-Label fPos-Rel">{{ fruit.label }}
+                            <span class="fObj-Cancel fPos-Abs fDis-None" data-obj="cancel">Отменить выбор</span>
                         </span>
-                        
-                        
-                        
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="fruit">
-                            <div class="fPos-Abs fObj-Count">
-                                <span class="fObj-Count-B fPos-Rel" data-count="99">99
+
+                        <div class="fObj-Price fPos-Rel fDis-Block" {% if fruit.count < 1 or not fruit.in_stock %}data-image="empty"{% else %}data-image="fruit"{% endif %}>
+                            <div class="fPos-Abs fObj-Count fDis-None">
+                                <span class="fObj-Count-B fPos-Rel" data-count="0">0
                                     <span class="fObj-Count-L fPos-Abs">шт</span>
                                 </span>
                             </div>
-                            <span class="fObj-Price-B fActive">9999</span>
+                            <span class="fObj-Price-B">{{ fruit.price|floatformat }}</span>
                             <span class="fObj-Price-L">руб/кг</span>
                         </div>
                     </div>
-                    
-                    <div class="fObj fDis-Inline fDisabled fOpacity-4">
-                        <div class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/fruit-obj-orange.png" %})no-repeat;">
-                            <div class="fPos-Rel fObj-Detail fDisabled">
-                                <div class="fObj-Ui-Wrapper fTextAlign-C">
-                                    <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
-                                    <span class="fObj-Ui" data-ui="plus">+</span>
-                                </div>
-                            </div>
-                            <span data-obj="disabled">Товар отсутствует</span>
-                        </div>
-                        
-                        <span class="fObj-Label fPos-Rel">Апельсины для сока</span>
-                        
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="empty">
-                            <span class="fObj-Price-B">999</span>
-                            <span class="fObj-Price-L">руб/кг</span>
-                        </div>
-                    </div>
-                    
+                    {% endfor %}
                     
                 </div>
             </div>
             
-            <div class="fLandLine fPos-Rel fLandLine-2 fLineFont">
+            <div data-content="menuNut" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
                 <div class="fWrapper-976PX fMarginAuto">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="nut"></span>
                     <span>Орехи</span>
@@ -174,123 +100,40 @@
              <div data-content="Nut" style="margin-top: 120px;">
                 <div class="fWrapper-976PX fMarginAuto">
                     
-                    <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;">
+                    {% for nut in nuts %}
+                    <div class="fObj fDis-Inline {% if nut.count < 1 or not nut.in_stock %}fDisabled fOpacity-4{% endif %}">
+                      <div class="fDis-Block fObj-Image" style="background: url({{ nut.image.url }})no-repeat;" data-image="nut">
                             <div class="fPos-Rel fObj-Detail">
                                 <div class="fObj-Ui-Wrapper fTextAlign-C">
                                     <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
+                                    <span class="fObj-Ui fDis-Inline" data-reserve="{{ nut.count }}" data-ui="counter">0</span>
                                     <span class="fObj-Ui" data-ui="plus">+</span>
                                 </div>
                             </div>
+                            {% if nut.count < 1 or not nut.in_stock %}<span data-obj="disabled">Товар отсутствует</span>{% endif %}
                         </div>
                         
-                        <span class="fObj-Label fPos-Rel">Грецкий орех</span>
-                        
-                        <span class="fObj-Label-L fPos-Rel">очищенный, половинки</span>
-                        
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="nut">
-                            <span class="fObj-Price-B">999</span>
-                            <span class="fObj-Price-L">руб/кг</span>
-                        </div>
-                    </div>
-                    
-                     <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;">
-                            <div class="fPos-Rel fObj-Detail">
-                                <div class="fObj-Ui-Wrapper fTextAlign-C">
-                                    <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
-                                    <span class="fObj-Ui" data-ui="plus">+</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <span class="fObj-Label fPos-Rel">Грецкий орех</span>
-                        
-                        <span class="fObj-Label-L fPos-Rel">очищенный, половинки</span>
-                        
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="nut">
-                            <span class="fObj-Price-B">999</span>
-                            <span class="fObj-Price-L">руб/кг</span>
-                        </div>
-                    </div>
-                    
-                     <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;">
-                            <div class="fPos-Rel fObj-Detail">
-                                <div class="fObj-Ui-Wrapper fTextAlign-C">
-                                    <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
-                                    <span class="fObj-Ui" data-ui="plus">+</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <span class="fObj-Label fPos-Rel">Грецкий орех</span>
-                        
-                        <span class="fObj-Label-L fPos-Rel">очищенный, половинки</span>
-                        
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="nut">
-                            <span class="fObj-Price-B">999</span>
-                            <span class="fObj-Price-L">руб/кг</span>
-                        </div>
-                    </div>
-                    
-                     <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;">
-                            <div class="fPos-Rel fObj-Detail">
-                                <div class="fObj-Ui-Wrapper fTextAlign-C">
-                                    <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
-                                    <span class="fObj-Ui" data-ui="plus">+</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <span class="fObj-Label fPos-Rel">Грецкий орех</span>
-                        
-                        <span class="fObj-Label-L fPos-Rel">очищенный, половинки</span>
-                        
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="nut">
-                            <span class="fObj-Price-B">999</span>
-                            <span class="fObj-Price-L">руб/кг</span>
-                        </div>
-                    </div>
-                    
-                     <div class="fObj fDis-Inline">
-                        <div class="fDis-Block fActive fObj-Image" style="background: url({% static "fruit-template/images/obj-image-nut.png" %})no-repeat;" data-image="nut">
-                            <div class="fPos-Rel fObj-Detail">
-                                <div class="fObj-Ui-Wrapper fTextAlign-C">
-                                    <span class="fObj-Ui" data-ui="minus">-</span>
-                                    <span class="fObj-Ui fDis-Inline" data-ui="counter">2</span>
-                                    <span class="fObj-Ui" data-ui="plus">+</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <span class="fObj-Label fPos-Rel">Грецкий орех</span>
-                        
-                        <span class="fObj-Label-L fPos-Rel">очищенный, половинки
-                            <span class="fObj-Cancel fPos-Abs" data-obj="cancel" style="bottom: -20px;">Отменить выбор</span>
-                        </span> 
-                         
-                        <div class="fObj-Price fPos-Rel fDis-Block" data-image="nut">
-                            <div class="fPos-Abs fObj-Count">
-                                <span class="fObj-Count-B fPos-Rel" data-count="99">99
+                        <span class="fObj-Label fPos-Rel">{{ nut.label }}</span>
+                        <span class="fObj-Label-L fPos-Rel">{{ nut.getNutType }}
+                            <span class="fObj-Cancel fPos-Abs fDis-None" data-obj="cancel" style="bottom: -20px;">Отменить выбор</span>
+                        </span>
+
+                        <div class="fObj-Price fPos-Rel fDis-Block" {% if nut.count < 1 or not nut.in_stock %}data-image="empty"{% else %}data-image="nut"{% endif %}>
+                            <div class="fPos-Abs fObj-Count fDis-None">
+                                <span class="fObj-Count-B fPos-Rel" data-count="0">0
                                     <span class="fObj-Count-L fPos-Abs">шт</span>
                                 </span>
                             </div>
-                            <span class="fObj-Price-B fActive">9999</span>
+                            <span class="fObj-Price-B">{{ nut.price|floatformat }}</span>
                             <span class="fObj-Price-L">руб/кг</span>
                         </div>
-                        
                     </div>
-                    
+                    {% endfor %}
+                        
                  </div>
             </div>
             
-            <div class="fLandLine fPos-Rel fLandLine-2 fLineFont">
+            <div data-content="menuBag" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
                 <div class="fMarginAuto" style="width:1006px;">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="bag"></span>
                     <span>Ваша корзина</span>
@@ -441,8 +284,8 @@
 
                   window.setTimeout(function(){
                     $('.fFormOrder-Success').text('').fadeOut('slow');
-                    //(location.search.split('?next=').length > 1 ? window.location = location.search.split('?next=')[1] : window.location = '/');
-                  },2000);
+                    (location.search.split('?next=').length > 1 ? window.location = location.search.split('?next=')[1] : window.location = '/');
+                  },4000);
                 }else{
                   $('.fFormOrder-Success').text('Ошибка!').fadeIn('slow');
 
@@ -461,6 +304,93 @@
             $('input[type="submit"]').click();
           });
 
+          $('[data-ui="plus"]').click(function(){
+
+            $parent = $(this).parent();
+            $obj = $parent.closest('.fObj');
+            $objImage = $obj.find('.fObj-Image');
+            $objCancel = $obj.find('.fObj-Cancel');
+            $objCount = $obj.find('.fObj-Count');
+            $dataCount = $obj.find('[data-count]');
+            $reserve = $parent.find('[data-reserve]');
+            $counter = $parent.find('[data-ui="counter"]');
+
+            var iDataCount = parseInt($dataCount.text());
+            var iCounter = parseInt($counter.text());
+            var iReserve = parseInt($reserve.data('reserve'));
+
+            if(iReserve > 0){
+              $objImage.addClass('fActive');
+
+              $objCount.show();
+              $objCancel.show();
+
+              iDataCount = iDataCount + 1;
+              $dataCount.html(iDataCount.toString()+'<span class="fObj-Count-L fPos-Abs">шт</span>');
+
+              $counter.text(iCounter+1);
+
+              iReserve = iReserve - 1;
+              $reserve.data('reserve', iReserve);
+            }else{
+              $objImage.addClass('fOpacity-4');
+            }
+
+            console.log($reserve.data('reserve'));
+
+          });
+
+          $('[data-ui="minus"]').click(function(){
+
+            $parent = $(this).parent();
+            $obj = $parent.closest('.fObj');
+            $objImage = $obj.find('.fObj-Image');
+            $objCancel = $obj.find('.fObj-Cancel');
+            $objCount = $obj.find('.fObj-Count');
+            $dataCount = $obj.find('[data-count]');
+            $reserve = $parent.find('[data-reserve]');
+            $counter = $parent.find('[data-ui="counter"]');
+
+            var iDataCount = parseInt($dataCount.text());
+            var iCounter = parseInt($counter.text());
+            var iReserve = parseInt($reserve.data('reserve'));
+
+            if(iCounter > 0){
+              $objImage.removeClass('fOpacity-4');
+
+              iDataCount = iDataCount - 1;
+              $dataCount.html(iDataCount.toString()+'<span class="fObj-Count-L fPos-Abs">шт</span>');
+
+              $counter.text(iCounter-1);
+
+              iReserve = iReserve + 1;
+              $reserve.data('reserve', iReserve);
+            }else{
+              $objImage.removeClass('fActive');
+
+              $objCount.hide();
+              $objCancel.hide();
+            }
+
+            console.log($reserve.data('reserve'));
+
+          });
+
+          $('[data-obj="cancel"]').click(function(){
+
+            $obj = $(this).closest('.fObj');
+            $counter = $obj.find('[data-ui="counter"]');
+            $minus = $obj.find('[data-ui="minus"]');
+
+            var iCounter = parseInt($counter.text());
+
+            for(var i=0; i<iCounter+1; i++){
+                $minus.click();
+            }
+
+          });
+
+        //
         });
 
         function csrfSafeMethod(method) {

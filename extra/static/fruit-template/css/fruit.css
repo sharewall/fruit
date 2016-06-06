@@ -41,9 +41,9 @@ body{
     width: 1920px;
 }
 .fLandHeader{
-    background: url(../images/land-head-1.png)no-repeat;
-    height: 1135px;
     /*background: url(../images/land-header.png)no-repeat;*/
+    /*background: url(../images/land-head-1.png)no-repeat; test*/
+    height: 1135px;
 }
 .fLandHeader-H1{
     background: url(../images/land-head-h1.png)no-repeat;
@@ -70,8 +70,8 @@ body{
 }
 .fLandMiddle{
     /*background: url(../images/land-middle-1.png)no-repeat;*/
-    background: url(../images/land-middle-2.png)no-repeat;
-    height: 3343px;
+    /*background: url(../images/land-middle-2.png)no-repeat; test*/
+    /*height: 3343px; not test*/
     margin-top: -360px;
 }
 .fLineFont{
@@ -139,8 +139,8 @@ body{
     bottom: 210px;
     left: 160px;
     padding-top: 20px; 
-    padding-left: 12px;
-    text-align: left;
+    /*padding-left: 12px;
+    text-align: left;*/
 }
 .fObj-Price[data-image="fruit"]{
     background: url(../images/fruit-price.png)no-repeat;
@@ -357,18 +357,21 @@ body{
 .fFormOrder input[name="city"]{
     width: 126px;
     background: url(../images/input-city.png)no-repeat;
+    display: none;
 }
 .fFormOrder input[name="street"]{
     width: 93px;
-    background: url(../images/input-street.png)no-repeat;
+    /*background: url(../images/input-street.png)no-repeat;*/
+    background: url(../images/input-city.png)no-repeat;
 }
 .fFormOrder input[name="house"],
 .fFormOrder input[name="corps"],
 .fFormOrder input[name="building"],
 .fFormOrder input[name="number"]{
     background: url(../images/input-house.png)no-repeat;
-    width: 35px;
+    width: 87px;
     padding-left: 11px;
+    background-size: cover;
 }
 .fFormOrder input[name="phone"]{
     background: url(../images/input-phone.png);
@@ -506,8 +509,8 @@ body{
 .fObj-Count-L{
     font: 700 15px / 27px Intro;
     top: -5px;
-    /*right: -21px;*/
-    right: -12px;
+    /*right: -21px;
+    right: -12px;*/
 }
 .fOpacity-4{
     opacity: 0.4;
@@ -519,4 +522,7 @@ body{
 }
 .fDisabled{
     pointer-events: none;
+}
+.fDis-None{
+    display: none;
 }
