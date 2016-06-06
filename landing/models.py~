@@ -53,7 +53,7 @@ class Product(models.Model):
     in_stock = models.BooleanField('В наличии', editable=True, default=True)
     image = models.FileField('Картинка', upload_to=generate_filename)
     count = models.IntegerField('Количество', default=0)
-    price = models.FloatField("Цена", default=0.0)
+    price = models.FloatField("Цена(руб/кг)", default=0.0)
     
     FRUIT = 'FRU'
     NUT = 'NUT'

@@ -276,6 +276,9 @@ body{
     overflow: hidden;
     padding-left: 10px;
 }
+.fOrderTable-Obj:hover{
+    background: url(../images/ordertable-obj-active-bg.png);
+}
 .fOrderTable-Obj.fActive{
     background: url(../images/ordertable-obj-active-bg.png);
 }
@@ -302,16 +305,24 @@ body{
     height: 14px;
     vertical-align: middle;
     margin-left: 5px;
+    display: none;
+}
+.fOrderTable-Obj:hover [data-event="cancel"],
+.fOrderTable-Obj:hover [data-event="minus"],
+.fOrderTable-Obj:hover [data-event="plus"]{
+    display: inline-block;
+}
+[data-event="minus"],
+[data-event="plus"]{
+    font: 700 16px / 36px Intro;
+    vertical-align: middle;
+    display: none;
 }
 [data-event="minus"]{
     color: #ff4343;
-    font: 700 16px / 36px Intro;
-    vertical-align: middle;
 }
 [data-event="plus"]{
     color: #99cc33;
-    font: 700 16px / 36px Intro;
-    vertical-align: middle;
 }
 .fOrder-Line{
     height: 1px;
@@ -509,8 +520,8 @@ body{
 .fObj-Count-L{
     font: 700 15px / 27px Intro;
     top: -5px;
-    /*right: -21px;*/
-    right: -12px;
+    /*right: -21px;
+    right: -12px;*/
 }
 .fOpacity-4{
     opacity: 0.4;

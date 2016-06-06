@@ -59,7 +59,7 @@
                 <div class="fWrapper-976PX fMarginAuto">
                     
                     {% for fruit in fruits %}
-                    <div class="fObj fDis-Inline {% if fruit.count < 1 or not fruit.in_stock %}fDisabled fOpacity-4{% endif %}">
+                    <div class="fObj fDis-Inline {% if fruit.count < 1 or not fruit.in_stock %}fDisabled fOpacity-4{% endif %}" data-pk="{{ fruit.pk }}">
                       <div class="fDis-Block fObj-Image" style="background: url({{ fruit.image.url }})no-repeat;" data-image="fruit">
                             <div class="fPos-Rel fObj-Detail">
                                 <div class="fObj-Ui-Wrapper fTextAlign-C">
@@ -72,17 +72,17 @@
                         </div>
                         
                         <span class="fObj-Label fPos-Rel">{{ fruit.label }}
-                            <span class="fObj-Cancel fPos-Abs fDis-None" data-obj="cancel">Отменить выбор</span>
+                            <span class="fObj-Cancel fPos-Abs fDis-None" data-obj="cancel" data-ui="cancel">Отменить выбор</span>
                         </span>
 
                         <div class="fObj-Price fPos-Rel fDis-Block" {% if fruit.count < 1 or not fruit.in_stock %}data-image="empty"{% else %}data-image="fruit"{% endif %}>
                             <div class="fPos-Abs fObj-Count fDis-None">
                                 <span class="fObj-Count-B fPos-Rel" data-count="0">0
-                                    <span class="fObj-Count-L fPos-Abs">шт</span>
+                                    <span class="fObj-Count-L fPos-Abs">кг</span>
                                 </span>
                             </div>
-                            <span class="fObj-Price-B">{{ fruit.price|floatformat }}</span>
-                            <span class="fObj-Price-L">руб/кг</span>
+                            <span class="fObj-Price-B" data-price="{{ fruit.price|floatformat }}">{{ fruit.price|floatformat }}</span>
+                            <span class="fObj-Price-L" data-help>руб/кг</span>
                         </div>
                     </div>
                     {% endfor %}
@@ -101,7 +101,7 @@
                 <div class="fWrapper-976PX fMarginAuto">
                     
                     {% for nut in nuts %}
-                    <div class="fObj fDis-Inline {% if nut.count < 1 or not nut.in_stock %}fDisabled fOpacity-4{% endif %}">
+                    <div class="fObj fDis-Inline {% if nut.count < 1 or not nut.in_stock %}fDisabled fOpacity-4{% endif %}" data-pk="{{ nut.pk }}">
                       <div class="fDis-Block fObj-Image" style="background: url({{ nut.image.url }})no-repeat;" data-image="nut">
                             <div class="fPos-Rel fObj-Detail">
                                 <div class="fObj-Ui-Wrapper fTextAlign-C">
@@ -115,17 +115,17 @@
                         
                         <span class="fObj-Label fPos-Rel">{{ nut.label }}</span>
                         <span class="fObj-Label-L fPos-Rel">{{ nut.getNutType }}
-                            <span class="fObj-Cancel fPos-Abs fDis-None" data-obj="cancel" style="bottom: -20px;">Отменить выбор</span>
+                            <span class="fObj-Cancel fPos-Abs fDis-None" data-obj="cancel" data-ui="cancel" style="bottom: -20px;">Отменить выбор</span>
                         </span>
 
                         <div class="fObj-Price fPos-Rel fDis-Block" {% if nut.count < 1 or not nut.in_stock %}data-image="empty"{% else %}data-image="nut"{% endif %}>
                             <div class="fPos-Abs fObj-Count fDis-None">
                                 <span class="fObj-Count-B fPos-Rel" data-count="0">0
-                                    <span class="fObj-Count-L fPos-Abs">шт</span>
+                                    <span class="fObj-Count-L fPos-Abs">кг</span>
                                 </span>
                             </div>
-                            <span class="fObj-Price-B">{{ nut.price|floatformat }}</span>
-                            <span class="fObj-Price-L">руб/кг</span>
+                            <span class="fObj-Price-B" data-price="{{ nut.price|floatformat }}">{{ nut.price|floatformat }}</span>
+                            <span class="fObj-Price-L" data-help>руб/кг</span>
                         </div>
                     </div>
                     {% endfor %}
@@ -149,31 +149,25 @@
                             <div data-count>Кол-во</div>
                             <div data-price>Цена(руб.)</div>
                         </div>
-                        <div class="fOrderTable-Obj">
+                        <div class="fOrderTable-Obj" data-pk="2" data-num="1">
                             <div data-label>
-                            <span>1. Наименование товара</span>
-                            </div>
-                            <div data-count>99</div>
-                            <div data-price>99 999</div>
-                        </div>
-                        <div class="fOrderTable-Obj fActive">
-                            <div data-label>
-                                <span>2. Наименование товара</span>
+                                <span>1. Наименование товара</span>
                                 <span class="fDis-Inline" data-event="cancel"></span>
                             </div>
                             <div data-count>
                                 <span class="fDis-Inline" data-event="minus">-</span>
-                                <span style="margin-left: 5px; margin-right: 4px;">99</span>
+                                <span style="margin-left: 5px; margin-right: 4px;">0</span>
                                 <span class="fDis-Inline" data-event="plus">+</span>
                             </div>
-                            <div data-price>99 999</div>
+                            <div data-price>0</div>
                         </div>
                         <div class="fOrderTable-Result">
                             <div data-label></div>
-                            <div data-count>9999</div>
-                            <div data-price>999 999</div>
+                            <div data-count>0</div>
+                            <div data-price>0</div>
                         </div>
                     </div>
+
                     <div class="fDis-Inline" data-order="nut" style="width:500px;">
                         <h3>Орехи:</h3>
                         <div class="fOrderTable-Title">
@@ -181,19 +175,40 @@
                             <div data-count>Кол-во</div>
                             <div data-price>Цена(руб.)</div>
                         </div>
-                        <div class="fOrderTable-Obj">
-                            <div data-label>1. Наименование товара</div>
-                            <div data-count>99</div>
-                            <div data-price>99 999</div>
+                        <div class="fOrderTable-Obj" data-pk="6" data-num="1">
+                            <div data-label>
+                                <span>1. Наименование товара</span>
+                                <span class="fDis-Inline" data-event="cancel"></span>
+                            </div>
+                            <div data-count>
+                                <span class="fDis-Inline" data-event="minus">-</span>
+                                <span style="margin-left: 5px; margin-right: 4px;">0</span>
+                                <span class="fDis-Inline" data-event="plus">+</span>
+                            </div>
+                            <div data-price>0</div>
+                        </div>
+                        <div class="fOrderTable-Obj" data-pk="7" data-num="2">
+                            <div data-label>
+                                <span>2. Наименование товара</span>
+                                <span class="fDis-Inline" data-event="cancel"></span>
+                            </div>
+                            <div data-count>
+                                <span class="fDis-Inline" data-event="minus">-</span>
+                                <span style="margin-left: 5px; margin-right: 4px;">0</span>
+                                <span class="fDis-Inline" data-event="plus">+</span>
+                            </div>
+                            <div data-price>0</div>
                         </div>
                         <div class="fOrderTable-Result">
                             <div data-label></div>
-                            <div data-count>9999</div>
-                            <div data-price>999 999</div>
+                            <div data-count>0</div>
+                            <div data-price>0</div>
                         </div>
                     </div>
                     <div class="fClear"></div>
+
                     <div class="fOrder-Line" style="margin-top: 27px;"></div>
+
                 </div>
             </div>
             <div class="fClear"></div>
@@ -216,9 +231,10 @@
                         
                     </form>
                     
-                    <div class="fFloat-R" style="margin-top: 20px; width: 300px;" data-summ>
+                    <div class="fFloat-R fTextAlign-L" style="margin-top: 20px; width: 300px;" data-summ>
                         <span style="color: #ffffff;font: 700 30px / 36px Intro-Light;">Итого: </span>
-                        <span style="color: #99cc33;font: 700 30px / 36px Intro-Light;">999 999 руб.</span>
+                        <span style="color: #99cc33;font: 700 30px / 36px Intro-Light;" data-total>0</span>
+                        <span style="color: #99cc33;font: 700 30px / 36px Intro-Light;"> руб.</span>
                         <br/>
                         <span class="fFloat-L" style="color: rgba(255, 255, 255, 0.08); font: 400 14px/24px Intro-Bold; margin-top: -10px;">включая доставку</span>
                         <div class="fClear"></div>
@@ -308,6 +324,8 @@
 
             $parent = $(this).parent();
             $obj = $parent.closest('.fObj');
+            $objHelp = $obj.find('[data-help]');
+            $objPrice = $obj.find('[data-price]');
             $objImage = $obj.find('.fObj-Image');
             $objCancel = $obj.find('.fObj-Cancel');
             $objCount = $obj.find('.fObj-Count');
@@ -315,6 +333,8 @@
             $reserve = $parent.find('[data-reserve]');
             $counter = $parent.find('[data-ui="counter"]');
 
+            var iInitDataPrice = parseInt($objPrice.data('price'));
+            var iDataPrice = parseInt($objPrice.text());
             var iDataCount = parseInt($dataCount.text());
             var iCounter = parseInt($counter.text());
             var iReserve = parseInt($reserve.data('reserve'));
@@ -326,9 +346,35 @@
               $objCancel.show();
 
               iDataCount = iDataCount + 1;
-              $dataCount.html(iDataCount.toString()+'<span class="fObj-Count-L fPos-Abs">шт</span>');
+              $dataCount.html(iDataCount.toString()+'<span class="fObj-Count-L fPos-Abs">кг</span>');
 
               $counter.text(iCounter+1);
+
+              iDataPrice = iDataCount * iInitDataPrice;
+              $objPrice.text(iDataPrice);
+              $objHelp.html('&nbsp;руб.&nbsp;');
+              //
+              if($('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').length > 0){
+                $orderDataCount = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').find('[data-count] > span:not([data-event])');
+                var iOrderDataCount = parseInt($orderDataCount.text());
+                iOrderDataCount++;
+                $orderDataCount.text(iOrderDataCount);
+
+                $orderDataPrice = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').find('[data-price]');
+                $orderDataPrice.text(iDataPrice);
+
+                $orderTableResult = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').parent().find('.fOrderTable-Result');
+
+                $resultCount = $orderTableResult.find('[data-count]');
+                $resultCount.text(parseInt($resultCount.text())+1);
+
+                $resultPrice = $orderTableResult.find('[data-price]');
+                $resultPrice.text(parseInt($resultPrice.text())+iInitDataPrice);
+              }
+
+              //
+              var iTotal = parseInt($('[data-total]').text());
+              $('[data-total]').text(iTotal + iInitDataPrice);
 
               iReserve = iReserve - 1;
               $reserve.data('reserve', iReserve);
@@ -336,7 +382,7 @@
               $objImage.addClass('fOpacity-4');
             }
 
-            console.log($reserve.data('reserve'));
+            //console.log($objImage.data('image'));
 
           });
 
@@ -344,6 +390,8 @@
 
             $parent = $(this).parent();
             $obj = $parent.closest('.fObj');
+            $objHelp = $obj.find('[data-help]');
+            $objPrice = $obj.find('[data-price]');
             $objImage = $obj.find('.fObj-Image');
             $objCancel = $obj.find('.fObj-Cancel');
             $objCount = $obj.find('.fObj-Count');
@@ -351,6 +399,8 @@
             $reserve = $parent.find('[data-reserve]');
             $counter = $parent.find('[data-ui="counter"]');
 
+            var iInitDataPrice = parseInt($objPrice.data('price'));
+            var iDataPrice = parseInt($objPrice.text());
             var iDataCount = parseInt($dataCount.text());
             var iCounter = parseInt($counter.text());
             var iReserve = parseInt($reserve.data('reserve'));
@@ -359,20 +409,61 @@
               $objImage.removeClass('fOpacity-4');
 
               iDataCount = iDataCount - 1;
-              $dataCount.html(iDataCount.toString()+'<span class="fObj-Count-L fPos-Abs">шт</span>');
+              $dataCount.html(iDataCount.toString()+'<span class="fObj-Count-L fPos-Abs">кг</span>');
 
               $counter.text(iCounter-1);
 
+              iDataPrice = iDataCount * iInitDataPrice;
+              $objPrice.text(iDataPrice);
+              $objHelp.html('&nbsp;руб.&nbsp;');
+              //
+              if($('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').length > 0){
+                $orderDataCount = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').find('[data-count] > span:not([data-event])');
+                var iOrderDataCount = parseInt($orderDataCount.text());
+                iOrderDataCount--;
+                $orderDataCount.text(iOrderDataCount);
+
+                $orderDataPrice = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').find('[data-price]');
+                $orderDataPrice.text(iDataPrice);
+
+                $orderTableResult = $('[data-order="'+$objImage.data('image')+'"] [data-pk="'+$obj.data('pk')+'"]').parent().find('.fOrderTable-Result');
+
+                $resultCount = $orderTableResult.find('[data-count]');
+                $resultCount.text(parseInt($resultCount.text())-1);
+
+                $resultPrice = $orderTableResult.find('[data-price]');
+                $resultPrice.text(parseInt($resultPrice.text())-iInitDataPrice);
+              }
+
+              //
+              var iTotal = parseInt($('[data-total]').text());
+              $('[data-total]').text(iTotal - iInitDataPrice);
+
               iReserve = iReserve + 1;
               $reserve.data('reserve', iReserve);
+
+              if(iCounter-1 == 0){
+                $objImage.removeClass('fActive');
+
+                $objCount.hide();
+                $objCancel.hide();
+
+                $objPrice.text(iInitDataPrice);
+                $objHelp.text('руб/кг');
+
+                $('.fOrderTable-Obj[data-pk="'+$obj.data('pk')+'"]').remove();
+              }
             }else{
               $objImage.removeClass('fActive');
 
               $objCount.hide();
               $objCancel.hide();
-            }
 
-            console.log($reserve.data('reserve'));
+              $objPrice.text(iInitDataPrice);
+              $objHelp.text('руб/кг');
+
+              $('.fOrderTable-Obj[data-pk="'+$obj.data('pk')+'"]').remove();
+            }
 
           });
 
@@ -382,12 +473,19 @@
             $counter = $obj.find('[data-ui="counter"]');
             $minus = $obj.find('[data-ui="minus"]');
 
-            var iCounter = parseInt($counter.text());
+            var iCounter = parseInt($counter.text()) + 1;
 
-            for(var i=0; i<iCounter+1; i++){
+            for(var i=0; i<iCounter; i++){
                 $minus.click();
             }
 
+          });
+
+          $('.fOrderTable-Obj [data-event]').click(function(){
+            $this = $(this);
+            $orderObj = $this.closest('.fOrderTable-Obj');
+            $obj = $('.fObj[data-pk="'+$orderObj.data('pk')+'"]');
+            $obj.find('[data-ui="'+$this.data('event')+'"]').click();
           });
 
         //

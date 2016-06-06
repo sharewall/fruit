@@ -70,6 +70,8 @@ class Order(models.Model):
     class Meta:
         db_table = 'Order'
 
+    #date = models.DateField('date', auto_now_add=True)
+
     name = models.CharField('Имя', max_length=200, blank=True, default='')
     street = models.CharField('Улица', max_length=200, blank=True, default='')
     house = models.CharField('Дом', max_length=200, blank=True, default='')
