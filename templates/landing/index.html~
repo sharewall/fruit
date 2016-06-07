@@ -47,7 +47,7 @@
         <div class="fLandMiddle">
             
             <div data-content="menuFruit" class="fLandLine fPos-Rel fLandLine-1 fLineFont">
-                <div class="fWrapper-976PX fMarginAuto">
+                <div class="fWrapper-976PX fMarginAuto fDis-Table fPos-Abs fCenter-Abs" style="margin-top: -59px; margin-left: -488px;">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="fruit"></span>
                     <span>Фрукты</span>
                 </div>
@@ -89,7 +89,7 @@
             </div>
             
             <div data-content="menuNut" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
-                <div class="fWrapper-976PX fMarginAuto">
+                <div class="fWrapper-976PX fMarginAuto fDis-Table fPos-Abs fCenter-Abs" style="margin-top: -59px; margin-left: -488px;">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="nut"></span>
                     <span>Орехи</span>
                 </div>
@@ -132,7 +132,7 @@
             </div>
             
             <div data-content="menuBag" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
-                <div class="fMarginAuto" style="width:1006px;">
+                <div class="fMarginAuto fDis-Table fPos-Abs fCenter-Abs" style="width: 1006px; margin-top: -59px; margin-left: -503px;">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="bag"></span>
                     <span>Ваша корзина</span>
                 </div>
@@ -289,30 +289,34 @@
 
           $('[data-event="submit"]').click(function(){
 
-            var fruits = '';
-            var nuts = '';
+            if($('[data-order="fruit"] [data-pk]').length > 0 || $('[data-order="nut"] [data-pk]').length > 0){
 
-            $.each($('[data-order="fruit"] [data-pk]'), function(i, obj){  
-              $obj = $(obj);
-              var pk = $obj.data('pk');
-              var label = $obj.find('[data-lablab]').text();
-              var count = $obj.find('[data-count] > :not([data-event])').text();
-              var price = $obj.find('[data-price]').text();
+                var fruits = '';
+                var nuts = '';
 
-              fruits += pk+':'+label+count+':'+price+'\n';
-            });
+                $.each($('[data-order="fruit"] [data-pk]'), function(i, obj){  
+                  $obj = $(obj);
+                  var pk = $obj.data('pk');
+                  var label = $obj.find('[data-lablab]').text();
+                  var count = $obj.find('[data-count] > :not([data-event])').text();
+                  var price = $obj.find('[data-price]').text();
 
-            $.each($('[data-order="nut"] [data-pk]'), function(i, obj){  
-              $obj = $(obj);
-              var pk = $obj.data('pk');
-              var label = $obj.find('[data-lablab]').text();
-              var count = $obj.find('[data-count] > :not([data-event])').text();
-              var price = $obj.find('[data-price]').text();
+                  fruits += pk+':'+label+count+':'+price+'\n';
+                });
 
-              nuts += pk+':'+label+count+':'+price+'\n';
-            });
+                $.each($('[data-order="nut"] [data-pk]'), function(i, obj){  
+                  $obj = $(obj);
+                  var pk = $obj.data('pk');
+                  var label = $obj.find('[data-lablab]').text();
+                  var count = $obj.find('[data-count] > :not([data-event])').text();
+                  var price = $obj.find('[data-price]').text();
 
-            $('textarea[name="order_list"]').val('Фрукты\n'+fruits+'\nОрехи\n'+nuts);
+                  nuts += pk+':'+label+count+':'+price+'\n';
+                });
+
+                $('textarea[name="order_list"]').val('Фрукты\n'+fruits+'\nОрехи\n'+nuts);
+
+            }
 
             $('input[type="submit"]').click();
 

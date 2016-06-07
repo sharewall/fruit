@@ -77,11 +77,11 @@ body{
     /*background: url(../images/land-middle-1.png)no-repeat;*/
     /*background: url(../images/land-middle-2.png)no-repeat; test*/
     /*height: 3343px; not test*/
-    margin-top: -360px;
+    margin-top: -120px;
 }
 .fLineFont{
     color: #ffffff;
-    font: 700 100px / 175px Intro-Caps;
+    font: 700 100px / 152px Intro-Caps;
 }
 .fLandLine-1{
     top: 130px;
@@ -159,6 +159,7 @@ body{
 }
 .fObj-Price-B{
     font: 700 25px / 19px Intro-Bold;
+    display: block;
 }
 .fObj-Price-B.fActive{
     font: 700 20px / 19px Intro-Bold;
@@ -541,4 +542,20 @@ body{
 }
 .fDis-None{
     display: none;
+}
+.fLand-H1{
+    font: 700 37px Intro-Caps;
+    top: 380px;
+    left: 500px;
+    color: rgba(102, 53, 27, 0.86);
+}
+.fDis-Table{
+    display: table;
+}
+.fDis-Table > *{
+    display: table-cell;
+}
+.fCenter-Abs{
+    top: 50%;
+    left: 50%;
 }
