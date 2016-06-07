@@ -1,0 +1,74 @@
+@media only screen and (max-width:1920px) {
+    .fLandHeader{
+      background-size: contain;
+    } 
+    .fLandWrapper{
+      width: auto;
+    }
+    .fWrapper-976PX{
+      width: 50%;
+      margin-top: -76px;
+      margin-left: -25%;
+    }
+}
+
+@media only screen and (max-width:1400px) {
+    .fWrapper-976PX{
+      width: 70%;
+      margin-left: -35%;
+    }
+    .fWrapper-976PX-LandLine{
+      margin-left: -25%;
+    }
+}
+
+@media only screen and (max-width:1337px) {
+    .fMenu-Choice, .fMenu-Choice.fActive {
+        height: 100px;
+    }
+    .fMenu-Choice{
+      width: 107px;
+    }
+    .fMenu-Choice.fActive{
+      width: 125px;
+    }
+    .fMenu-Choice-Image {
+      width: 60px;
+      height: 60px;
+    }
+}
+
+@media only screen and (max-width:1274px) {
+    .fFormWrapper{
+      height: 800px;
+    }
+}
+
+@media only screen and (max-width:1180px) {
+    .fLandWrapper{
+      width: 1180px;
+    }
+}
+
+
+/*@media only screen and (max-width:401px) {
+    
+    body{
+        min-width: 400px;
+        overflow: auto!important;
+    }
+    
+}*/
+
+/*@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+    /* iPhone 6 Portrait 
+
+      The iPhone 6 has 1334-by-750-pixel resolution at 326 ppi with 1400:1 contrast ratio (typical)
+
+      The iPhone 6+ has 1920-by-1080-pixel resolution at 401 ppi with 1300:1 contrast ratio (typical)
+}
+
+
+/*@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : landscape) { 
+    /* iPhone 6 landscape 
+}*/

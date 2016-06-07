@@ -15,6 +15,7 @@
 <title>{{ page.title }}</title>
 
 <link href="{% static "fruit-template/css/fruit.css" %}" rel="stylesheet"> 
+<link href="{% static "fruit-template/css/media-fruit.css" %}" rel="stylesheet"> 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 
@@ -40,21 +41,22 @@
         </div>
         
         <div class="fLandHeader">
-              <span class="fDis-Block fPos-Rel fLandLogo fMarginAuto"></span>
-              <h1 class="fDis-Inline fPos-Rel fLand-H1 fMarginAuto">Доставка продуктов домой и на работу</h1>
+          <img src="{% static "fruit-template/images/fruit-logo-3.png" %}" title="Доставка продуктов домой и на работу" alt="Доставка продуктов домой и на работу">
+              <!--<span class="fDis-Block fPos-Rel fLandLogo fMarginAuto"></span>
+              <h1 class="fDis-Inline fPos-Rel fLand-H1 fMarginAuto">Доставка продуктов домой и на работу</h1>-->
         </div>
         
         <div class="fLandMiddle">
             
             <div data-content="menuFruit" class="fLandLine fPos-Rel fLandLine-1 fLineFont">
-                <div class="fWrapper-976PX fMarginAuto fDis-Table fPos-Abs fCenter-Abs" style="margin-top: -59px; margin-left: -488px;">
+                <div class="fWrapper-976PX fWrapper-976PX-LandLine fMarginAuto fDis-Table fPos-Abs fCenter-Abs">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="fruit"></span>
                     <span>Фрукты</span>
                 </div>
             </div>
             
             <div data-content="Fruit">
-                <div class="fWrapper-976PX fMarginAuto">
+                <div class="fWrapper-976PX fMarginAuto fPos-Rel" style="left: 50%;">
                     
                     {% for fruit in fruits %}
                     <div class="fObj fDis-Inline {% if fruit.count < 1 or not fruit.in_stock %}fDisabled fOpacity-4{% endif %}" data-pk="{{ fruit.pk }}">
@@ -89,14 +91,14 @@
             </div>
             
             <div data-content="menuNut" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
-                <div class="fWrapper-976PX fMarginAuto fDis-Table fPos-Abs fCenter-Abs" style="margin-top: -59px; margin-left: -488px;">
+                <div class="fWrapper-976PX fMarginAuto fDis-Table fPos-Abs fCenter-Abs">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="nut"></span>
                     <span>Орехи</span>
                 </div>
             </div>
             
-             <div data-content="Nut" style="margin-top: 120px;">
-                <div class="fWrapper-976PX fMarginAuto">
+             <div data-content="Nut">
+                <div class="fWrapper-976PX fWrapper-976PX-LandLine fMarginAuto fPos-Rel" style="left:50%;">
                     
                     {% for nut in nuts %}
                     <div class="fObj fDis-Inline {% if nut.count < 1 or not nut.in_stock %}fDisabled fOpacity-4{% endif %}" data-pk="{{ nut.pk }}">
@@ -132,7 +134,7 @@
             </div>
             
             <div data-content="menuBag" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
-                <div class="fMarginAuto fDis-Table fPos-Abs fCenter-Abs" style="width: 1006px; margin-top: -59px; margin-left: -503px;">
+                <div class="fMarginAuto fDis-Table fPos-Abs fCenter-Abs" style="width: 1006px; margin-top: -76px; margin-left: -503px;">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="bag"></span>
                     <span>Ваша корзина</span>
                 </div>
@@ -183,10 +185,10 @@
                         <input name="name" type="text" placeholder="Ваше имя" required>
                         <input class="fFloat-L" name="city" type="text" placeholder="Город" value="Москва" disabled>
                         <input class="fFloat-L" name="street" type="text" placeholder="Улица" required>
-                        <input class="fFloat-L" name="house" type="text" placeholder="Дом">
-                        <input class="fFloat-L" name="corps" type="text" placeholder="Корп.">
-                        <input class="fFloat-L" name="building" type="text" placeholder="Стр.">
-                        <input class="fFloat-L" name="number" type="text" placeholder="No">
+                        <input class="fFloat-L" name="house" type="text" placeholder="Дом/Корпус">
+                        <!--<input class="fFloat-L" name="corps" type="text" placeholder="Корп.">-->
+                        <input class="fFloat-L" name="building" type="text" placeholder="Квартира/Офис">
+                        <!--<input class="fFloat-L" name="number" type="text" placeholder="No">-->
                         <div class="fClear"></div>
                         <input name="phone" type="text" placeholder="Ваше телефон" required>
                         <input name="email" type="email" placeholder="Ваше e-mail" required>

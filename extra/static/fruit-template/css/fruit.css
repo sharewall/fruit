@@ -44,11 +44,11 @@ body{
     /*width: 1920px;min*/
     width: 1920px;
 }
-.fLandHeader{
-    /*background: url(../images/land-header.png)no-repeat;*/
-    /*background: url(../images/land-head-1.png)no-repeat; test*/
-    background: url(../images/fruit-logo-2.png)no-repeat;
-    height: 898px;
+.fLandHeader > img{
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display: block;
 }
 .fLandHeader-H1{
     background: url(../images/land-head-h1.png)no-repeat;
@@ -71,7 +71,8 @@ body{
 }
 .fLandLine{
     height: 152px;
-    background: url(../images/land-line-1.png);
+    /*background: url(../images/land-line-1.png);*/
+    background-color: #202020;
 }
 .fLandMiddle{
     /*background: url(../images/land-middle-1.png)no-repeat;*/
@@ -114,7 +115,10 @@ body{
     vertical-align: middle;
 }
 [data-content="Fruit"]{
-    margin-top: 207px;
+    margin-top: 370px;
+}
+[data-content="Nut"]{
+    margin-top: 300px;
 }
 .fObj{
     height: 196px;
@@ -182,6 +186,7 @@ body{
     top: 5%;
     width: 165px;
     z-index: 1;
+    display: none;
 }
 .fMenu-Choice,
 .fMenu-Choice.fActive{
@@ -189,12 +194,16 @@ body{
     padding-top: 14px;
 }
 .fMenu-Choice{
-    background: url(../images/menu-choice.png)no-repeat;
+    /*background: url(../images/menu-choice.png)no-repeat;*/
     width: 147px;
+    background-color: #202020;
+    margin-bottom: 7px;
 }
 .fMenu-Choice.fActive{
-    background: url(../images/menu-choice-active.png)no-repeat;
+    /*background: url(../images/menu-choice-active.png)no-repeat;*/
+    background-color: rgb(123, 174, 24);
     width: 165px;
+    margin-bottom: 12px;
 }
 .fMenu-Choice-Label{
     color: #ffffff;
@@ -335,9 +344,9 @@ body{
     background-color: rgba(255, 255, 255, 0.1);
 }
 .fFormWrapper{
-    /*background: url(../images/form-white-noise.png);*/
     background: url(../images/form-white-noise-4.png)no-repeat;
     height: 850px;
+    background-position: 50% 0%;
 }
 
 .fFormOrder input:required{
@@ -385,8 +394,9 @@ body{
 .fFormOrder input[name="corps"],
 .fFormOrder input[name="building"],
 .fFormOrder input[name="number"]{
-    background: url(../images/input-house.png)no-repeat;
-    width: 87px;
+    /*background: url(../images/input-house.png)no-repeat;*/
+    background-color: #2C2932;
+    width: 206px;
     padding-left: 11px;
     background-size: cover;
 }
