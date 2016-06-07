@@ -91,14 +91,14 @@
             </div>
             
             <div data-content="menuNut" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
-                <div class="fWrapper-976PX fMarginAuto fDis-Table fPos-Abs fCenter-Abs">
+                <div class="fWrapper-976PX fWrapper-976PX-LandLine fMarginAuto fDis-Table fPos-Abs fCenter-Abs">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="nut"></span>
                     <span>Орехи</span>
                 </div>
             </div>
             
              <div data-content="Nut">
-                <div class="fWrapper-976PX fWrapper-976PX-LandLine fMarginAuto fPos-Rel" style="left:50%;">
+                <div class="fWrapper-976PX fMarginAuto fPos-Rel" style="left:50%;">
                     
                     {% for nut in nuts %}
                     <div class="fObj fDis-Inline {% if nut.count < 1 or not nut.in_stock %}fDisabled fOpacity-4{% endif %}" data-pk="{{ nut.pk }}">
@@ -134,7 +134,7 @@
             </div>
             
             <div data-content="menuBag" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
-                <div class="fMarginAuto fDis-Table fPos-Abs fCenter-Abs" style="width: 1006px; margin-top: -76px; margin-left: -503px;">
+                <div class="fMarginAuto fDis-Table fPos-Abs fCenter-Abs fMenuBag-Media" style="margin-top: -76px; margin-left: -25%;">
                     <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="bag"></span>
                     <span>Ваша корзина</span>
                 </div>

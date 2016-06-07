@@ -115,7 +115,7 @@ body{
     vertical-align: middle;
 }
 [data-content="Fruit"]{
-    margin-top: 370px;
+    margin-top: 270px;
 }
 [data-content="Nut"]{
     margin-top: 300px;
@@ -344,9 +344,9 @@ body{
     background-color: rgba(255, 255, 255, 0.1);
 }
 .fFormWrapper{
-    /*background: url(../images/form-white-noise.png);*/
     background: url(../images/form-white-noise-4.png)no-repeat;
     height: 850px;
+    background-position: 50% 0%;
 }
 
 .fFormOrder input:required{

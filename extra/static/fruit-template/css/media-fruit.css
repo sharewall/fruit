@@ -6,13 +6,32 @@
       width: auto;
     }
     .fWrapper-976PX{
-      width: 50%;
+      width: 52%;
       margin-top: -76px;
+      margin-left: -26%;
+    }
+}
+
+@media only screen and (max-width:1877px) {
+    .fWrapper-976PX{
+      width: 62%;
+      margin-left: -31%;
+    }
+    .fWrapper-976PX-LandLine{
       margin-left: -25%;
     }
 }
 
-@media only screen and (max-width:1400px) {
+@media only screen and (max-width:1700px) {
+    .fMenuBag-Media{
+      display: none;
+      /*margin-left: -30%;
+      width: auto;
+      font: 700 90px / 152px Intro-Caps;*/
+    }
+}
+
+@media only screen and (max-width:1573px) {
     .fWrapper-976PX{
       width: 70%;
       margin-left: -35%;
@@ -20,6 +39,26 @@
     .fWrapper-976PX-LandLine{
       margin-left: -25%;
     }
+}
+
+@media only screen and (max-width:1400px) {
+    .fWrapper-976PX{
+      width: 72%;
+      margin-left: -36%;
+    }
+    .fWrapper-976PX-LandLine{
+      margin-left: -25%;
+    }
+}
+
+@media only screen and (max-width:1355px) {
+    /* .fWrapper-976PX{
+      width: 76%;
+      margin-left: -39%;
+    } */
+    /*.fWrapper-976PX-LandLine{
+      margin-left: -25%;
+    }*/
 }
 
 @media only screen and (max-width:1337px) {
@@ -38,10 +77,31 @@
     }
 }
 
+@media only screen and (max-width:1283px) {
+    /*.fWrapper-976PX{
+      width: 80%;
+      margin-left: -40%;
+    }*/
+    /*.fWrapper-976PX-LandLine{
+      margin-left: -25%;
+    }*/
+}
+
 @media only screen and (max-width:1274px) {
     .fFormWrapper{
       height: 800px;
     }
+}
+
+
+@media only screen and (max-width:1219px) {
+    /*.fWrapper-976PX{
+      width: 90%;
+      margin-left: -45%;
+    }*/
+    /*.fWrapper-976PX-LandLine{
+      margin-left: -25%;
+    }*/
 }
 
 @media only screen and (max-width:1180px) {
