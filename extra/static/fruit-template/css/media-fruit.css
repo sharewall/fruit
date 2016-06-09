@@ -10,6 +10,9 @@
       margin-top: -76px;
       margin-left: -26%;
     }
+    .fMenuBag-Media{
+      display: none;
+    }
 }
 
 @media only screen and (max-width:1877px) {
@@ -25,9 +28,6 @@
 @media only screen and (max-width:1700px) {
     .fMenuBag-Media{
       display: none;
-      /*margin-left: -30%;
-      width: auto;
-      font: 700 90px / 152px Intro-Caps;*/
     }
 }
 

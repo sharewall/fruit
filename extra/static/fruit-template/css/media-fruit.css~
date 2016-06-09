@@ -25,9 +25,6 @@
 @media only screen and (max-width:1700px) {
     .fMenuBag-Media{
       display: none;
-      /*margin-left: -30%;
-      width: auto;
-      font: 700 90px / 152px Intro-Caps;*/
     }
 }
 
@@ -95,13 +92,13 @@
 
 
 @media only screen and (max-width:1219px) {
-    .fWrapper-976PX{
+    /*.fWrapper-976PX{
       width: 90%;
       margin-left: -45%;
-    }
-    .fWrapper-976PX-LandLine{
+    }*/
+    /*.fWrapper-976PX-LandLine{
       margin-left: -25%;
-    }
+    }*/
 }
 
 @media only screen and (max-width:1180px) {
