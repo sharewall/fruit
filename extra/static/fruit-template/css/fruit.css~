@@ -118,7 +118,7 @@ body{
     margin-top: 270px;
 }
 [data-content="Nut"]{
-    margin-top: 300px;
+    margin-top: 200px;
 }
 .fObj{
     height: 196px;
