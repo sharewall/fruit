@@ -1,5 +1,5 @@
 from django.db import models
-import uuid, datetime
+import uuid, datetime, re
 
 def generate_filename(self, filename):
     path = "%s/%s" % ( str(datetime.datetime.now().date().strftime("%d-%m-%Y")), str(uuid.uuid4()) + '-' + filename )
@@ -10,6 +10,18 @@ def generateThumbnail(self):
 
 def generateImage(self):
     return '<a href="/media/%s"><img src="/media/%s" width=170px height=170px /></a>' % (self.image, self.image)
+
+def generateProductLink(self):
+    links = ''
+    result = re.findall('\n([0-9]) : (.+) -', self.order_list)
+
+    for r in result:
+        #links += '1'
+        links += '<a href="/fruit-admin/landing/product/%s/change/">%s</a><br/>' % (str(r[0]), str(r[1]))
+        #if r[0] is not None and r[1] is not None:
+        #    links += '%s-%s' % (str(r[0]), str(r[1]))
+
+    return links
 
 class NutType(models.Model):
     label = models.CharField('Тип ореха', max_length=100, blank=True, default='')
@@ -24,16 +36,16 @@ class Product(models.Model):
     def getThubmnail(self):
         return generateThumbnail(self)
 
-    def getImage(self):
-        return generateImage(self)
-
     getThubmnail.short_description = "Картинка"
     getThubmnail.allow_tags = True
+
+    def getImage(self):
+        return generateImage(self)
 
     getImage.short_description = "Картинка"
     getImage.allow_tags = True
 
-    nut_type = models.ManyToManyField(NutType, verbose_name='Тип ореха')
+    nut_type = models.ManyToManyField(NutType, verbose_name='Тип ореха', blank=True, null=True)
 
     def getNutType(self):
         if self.nut_type.all().count() > 0:
@@ -75,13 +87,20 @@ class Order(models.Model):
 
     def getCreateDate(self):
         return str(self.date_create.strftime('%d.%m.%Y %H:%M'))
+
     getCreateDate.short_description = "Дата создания"
+
+    def getProductLink(self):
+        return generateProductLink(self)
+
+    getProductLink.short_description = "Ссылки на продукты"
+    getProductLink.allow_tags = True
 
     name = models.CharField('Имя', max_length=200, blank=True, default='')
     street = models.CharField('Улица', max_length=200, blank=True, default='')
-    house = models.CharField('Дом', max_length=200, blank=True, default='')
+    house = models.CharField('Дом/Корпус', max_length=200, blank=True, default='')
     corps = models.CharField('Корпус', max_length=200, blank=True, default='')
-    building = models.CharField('Строение', max_length=200, blank=True, default='')
+    building = models.CharField('Квартира/Офис', max_length=200, blank=True, default='')
     number = models.CharField('NO(Номер)', max_length=200, blank=True, default='')
     phone = models.CharField('Телефон', max_length=200, blank=True, default='')
     email = models.CharField('E-mail', max_length=200, blank=True, default='')

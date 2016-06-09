@@ -295,6 +295,9 @@
 
                 var fruits = '';
                 var nuts = '';
+                var dataCount = '';
+                var dataPrice = '';
+                var dataTotal = '';
 
                 $.each($('[data-order="fruit"] [data-pk]'), function(i, obj){  
                   $obj = $(obj);
@@ -303,8 +306,13 @@
                   var count = $obj.find('[data-count] > :not([data-event])').text();
                   var price = $obj.find('[data-price]').text();
 
-                  fruits += pk+':'+label+count+':'+price+'\n';
+                  fruits += pk+' : '+label.trim()+' - '+count+' шт. : '+price+' руб.\n';
                 });
+
+                dataCount = $('[data-order="fruit"] .fOrderTable-Result > [data-count]').text();
+                dataPrice = $('[data-order="fruit"] .fOrderTable-Result > [data-price]').text();
+
+                fruits += 'Всего фрукты\n'+dataCount+' шт. : '+dataPrice+' руб.\n';
 
                 $.each($('[data-order="nut"] [data-pk]'), function(i, obj){  
                   $obj = $(obj);
@@ -313,10 +321,18 @@
                   var count = $obj.find('[data-count] > :not([data-event])').text();
                   var price = $obj.find('[data-price]').text();
 
-                  nuts += pk+':'+label+count+':'+price+'\n';
+                  nuts += pk+' : '+label.trim()+' - '+count+' шт. : '+price+' руб.\n';
                 });
 
-                $('textarea[name="order_list"]').val('Фрукты\n'+fruits+'\nОрехи\n'+nuts);
+                dataCount = $('[data-order="nut"] .fOrderTable-Result > [data-count]').text();
+                dataPrice = $('[data-order="nut"] .fOrderTable-Result > [data-price]').text();
+
+                nuts += 'Всего орехи\n'+dataCount+' шт. : '+dataPrice+' руб.\n';
+
+                dataTotal = $('[data-total]').text();
+
+                //console.log('Фрукты\n'+fruits+'\nОрехи\n'+nuts+'\nИтого\n'+dataTotal+' руб.');
+                $('textarea[name="order_list"]').val('Фрукты\n'+fruits+'\nОрехи\n'+nuts+'\nИтого\n'+dataTotal+' руб.');
 
             }
 
