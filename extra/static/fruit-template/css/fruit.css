@@ -567,7 +567,7 @@ body{
     display: table;
 }
 .fDis-Table > *{
-    /*display: table-cell;*/
+    display: table-cell;
 }
 .fCenter-Abs{
     top: 50%;

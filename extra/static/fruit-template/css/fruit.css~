@@ -1,18 +1,22 @@
 @font-face{
     font-family: Intro-Caps;
     src: url(../fonts/Intro-Regular-Caps.otf);
+    src: url(../fonts/Intro-Regular-Caps.woff);
 }
 @font-face{
     font-family: Intro-Light;
     src: url(../fonts/Intro-Light.otf);
+    src: url(../fonts/Intro-Light.woff);
 }
 @font-face{
     font-family: Intro-Bold;
     src: url(../fonts/Intro-Bold.otf);
+    src: url(../fonts/Intro-Bold.woff);
 }
 @font-face{
     font-family: Intro;
     src: url(../fonts/Intro-Book.otf);
+    src: url(../fonts/Intro-Book.woff);
 }
 html, 
 body{

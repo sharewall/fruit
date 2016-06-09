@@ -92,9 +92,10 @@
             
             <div data-content="menuNut" class="fLandLine fPos-Rel fLandLine-2 fLineFont">
                 <div class="fWrapper-976PX fWrapper-976PX-LandLine fMarginAuto fDis-Table fPos-Abs fCenter-Abs">
-                    <span class="fDis-Inline fLineIcon fVertAlign-Mid" data-image="nut"></span>
-                    <span>Орехи</span>
+                    <span class="fDis-Inline fLineIcon fVertAlign-Mid fFloat-L" data-image="nut"></span>
+                    <span style="">Орехи</span>
                 </div>
+                <div class="fClear"></div>
             </div>
             
              <div data-content="Nut">
@@ -306,7 +307,7 @@
                   var count = $obj.find('[data-count] > :not([data-event])').text();
                   var price = $obj.find('[data-price]').text();
 
-                  fruits += pk+':'+label.trim()+' - '+count+' шт. : '+price+' руб.\n';
+                  fruits += pk+' : '+label.trim()+' - '+count+' шт. : '+price+' руб.\n';
                 });
 
                 dataCount = $('[data-order="fruit"] .fOrderTable-Result > [data-count]').text();
@@ -321,7 +322,7 @@
                   var count = $obj.find('[data-count] > :not([data-event])').text();
                   var price = $obj.find('[data-price]').text();
 
-                  nuts += pk+':'+label.trim()+' - '+count+' шт. : '+price+' руб.\n';
+                  nuts += pk+' : '+label.trim()+' - '+count+' шт. : '+price+' руб.\n';
                 });
 
                 dataCount = $('[data-order="nut"] .fOrderTable-Result > [data-count]').text();
