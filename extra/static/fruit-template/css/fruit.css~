@@ -488,10 +488,17 @@ body{
 }
 .fObj-Detail{
     top: 105px;
-    background: url(../images/obj-detail-wrapper.png)no-repeat;
+    /*background: url(../images/obj-detail-wrapper.png)no-repeat;*/
     width: 168px;
     height: 66px;
     opacity: 0;
+    background-color: rgba(32, 29, 29, 0.64);
+    -webkit-border-bottom-right-radius: 180px;
+    -webkit-border-bottom-left-radius: 180px;
+    -moz-border-radius-bottomright: 180px;
+    -moz-border-radius-bottomleft: 180px;
+    border-bottom-right-radius: 180px;
+    border-bottom-left-radius: 180px;
 }
 .fObj-Detail:not(.fDisabled):hover{
     opacity: 1;
@@ -567,7 +574,7 @@ body{
     display: table;
 }
 .fDis-Table > *{
-    /*display: table-cell;*/
+    display: table-cell;
 }
 .fCenter-Abs{
     top: 50%;
