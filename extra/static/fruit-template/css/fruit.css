@@ -390,9 +390,8 @@ body{
     display: none;
 }
 .fFormOrder input[name="street"]{
-    width: 93px;
-    /*background: url(../images/input-street.png)no-repeat;*/
-    background: url(../images/input-city.png)no-repeat;
+    width: 273px;
+    background: url(../images/input-street-1.png)no-repeat;
 }
 .fFormOrder input[name="house"],
 .fFormOrder input[name="corps"],
@@ -400,7 +399,7 @@ body{
 .fFormOrder input[name="number"]{
     /*background: url(../images/input-house.png)no-repeat;*/
     background-color: #2C2932;
-    width: 206px;
+    width: 116px;
     padding-left: 11px;
     background-size: cover;
 }

@@ -390,9 +390,8 @@ body{
     display: none;
 }
 .fFormOrder input[name="street"]{
-    width: 93px;
-    /*background: url(../images/input-street.png)no-repeat;*/
-    background: url(../images/input-city.png)no-repeat;
+    width: 273px;
+    background: url(../images/input-street-1.png)no-repeat;
 }
 .fFormOrder input[name="house"],
 .fFormOrder input[name="corps"],
