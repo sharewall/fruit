@@ -369,14 +369,14 @@ body{
 
 .fFormOrder input{
     color: #fdfeff;
-    font: 400 14px / 36px Intro;
+    font: 400 14px / 20px Intro;
     background-color: #131319;
     border: none;
     outline: none;
     display: block;
     margin-top: 20px; 
     margin-left: 20px;
-    background-size: cover;
+    background-size: contain;
     padding-left: 60px;
     height: 51px;
 }
@@ -398,10 +398,10 @@ body{
 .fFormOrder input[name="building"],
 .fFormOrder input[name="number"]{
     /*background: url(../images/input-house.png)no-repeat;*/
+    /*background-size: cover;*/
     background-color: #2C2932;
-    width: 206px;
+    width: 116px;
     padding-left: 11px;
-    background-size: cover;
 }
 .fFormOrder input[name="phone"]{
     background: url(../images/input-phone.png);

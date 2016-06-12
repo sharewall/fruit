@@ -376,7 +376,7 @@ body{
     display: block;
     margin-top: 20px; 
     margin-left: 20px;
-    background-size: cover;
+    background-size: contain;
     padding-left: 60px;
     height: 51px;
 }
@@ -398,10 +398,10 @@ body{
 .fFormOrder input[name="building"],
 .fFormOrder input[name="number"]{
     /*background: url(../images/input-house.png)no-repeat;*/
+    /*background-size: cover;*/
     background-color: #2C2932;
     width: 116px;
     padding-left: 11px;
-    background-size: cover;
 }
 .fFormOrder input[name="phone"]{
     background: url(../images/input-phone.png);

@@ -3,7 +3,6 @@ from . import models
 
 admin.actions.delete_selected.short_description = "Удалить"
 
-
 def yesProduct(modeladmin, request, queryset):
    queryset.update(in_stock=True) 
 

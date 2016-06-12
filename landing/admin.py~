@@ -44,7 +44,6 @@ class OrderAdmin(admin.ModelAdmin):
     list_display=('name', 'phone', 'email', 'company', 'getCreateDate', 'complete', 'id')
     list_filter=('company', 'complete')
     search_fields=['id', 'name']
-    #prepopulated_fields = {'name': ('company')}
     fields=('id', 'getCreateDate', ('name','company'),('phone','email','complete'),('street','house','building'), 'order_list', 'getProductLink')
     readonly_fields=('id', 'getCreateDate', 'getProductLink')
     actions=[yesOrder, noOrder]
